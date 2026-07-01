@@ -1,20 +1,103 @@
 {
+  "id": "/",
   "name": "Clínica Dra Jessica Daniela",
   "short_name": "Dra Jessica",
-  "description": "Odontologia estética, ortodontia e harmonização orofacial em Varginha-MG.",
+  "description": "Facetas, lentes, odontologia estética, ortodontia e harmonização orofacial em Varginha-MG.",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display_override": [
+    "standalone",
+    "browser"
+  ],
+  "display": "standalone",
+  "orientation": "portrait",
+  "categories": [
+    "health",
+    "medical"
+  ],
   "icons": [
     {
       "src": "assets/favicon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "assets/favicon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "theme_color": "#080808",
   "background_color": "#080808",
-  "display": "standalone"
+  "shortcuts": [
+    {
+      "name": "Agendar consulta",
+      "short_name": "Agendar",
+      "description": "Abrir o contato da clínica",
+      "url": "/#contato",
+      "icons": [
+        {
+          "src": "assets/favicon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Facetas e lentes",
+      "short_name": "Facetas",
+      "description": "Ver facetas, lentes e estética do sorriso",
+      "url": "/#facetas",
+      "icons": [
+        {
+          "src": "assets/favicon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Harmonização Orofacial",
+      "short_name": "HOF",
+      "description": "Ver tratamentos de harmonização orofacial",
+      "url": "/#harmonizacao",
+      "icons": [
+        {
+          "src": "assets/favicon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Antes de agendar",
+      "short_name": "Antes",
+      "description": "Entender avaliação, indicação e expectativa",
+      "url": "/#antes-de-agendar",
+      "icons": [
+        {
+          "src": "assets/favicon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Tratamentos",
+      "short_name": "Tratamentos",
+      "description": "Ver especialidades e tratamentos",
+      "url": "/#especialidades",
+      "icons": [
+        {
+          "src": "assets/favicon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
 }

@@ -1,0 +1,89 @@
+const CACHE_NAME = "dra-jessica-site-v3";
+
+const PRECACHE_URLS = [
+  "/",
+  "/index.html",
+  "/politica-privacidade.html",
+  "/site.webmanifest",
+  "/robots.txt",
+  "/sitemap.xml",
+  "/favicon.png",
+  "/favicon-32.png",
+  "/apple-touch-icon.png",
+  "/og-image.png",
+  "/dra-jessica-daniela.jpg",
+  "/assets/favicon-192.png",
+  "/assets/favicon-512.png",
+  "/assets/logo-jd-preto.png",
+  "/assets/logo-jd-branco.png",
+  "/assets/dra-jessica-atendimento-premium.jpg",
+  "/assets/dra-jessica-jaleco.jpeg",
+  "/assets/fachada-clinica-premium.jpg",
+  "/assets/atendimento-hof.jpeg",
+  "/assets/caso-sorriso-01.jpeg",
+  "/assets/caso-sorriso-02.jpeg",
+  "/assets/caso-sorriso-03.jpeg",
+  "/assets/caso-sorriso-04.jpeg",
+  "/assets/caso-hof-01.jpeg",
+  "/assets/caso-hof-02.jpeg",
+  "/assets/tratamento-reabilitacao.jpeg",
+  "/assets/tratamento-ortodontia.jpeg",
+  "/assets/tratamento-clinica-geral.jpeg",
+  "/assets/odontopediatria-atendimento.jpg"
+];
+
+self.addEventListener("install", event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(PRECACHE_URLS))
+      .then(() => self.skipWaiting())
+  );
+});
+
+self.addEventListener("activate", event => {
+  event.waitUntil(
+    caches.keys()
+      .then(keys => Promise.all(
+        keys
+          .filter(key => key !== CACHE_NAME)
+          .map(key => caches.delete(key))
+      ))
+      .then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener("fetch", event => {
+  const request = event.request;
+  const url = new URL(request.url);
+
+  if (request.method !== "GET" || url.origin !== self.location.origin) return;
+
+  if (request.mode === "navigate") {
+    event.respondWith(
+      fetch(request)
+        .then(response => {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
+          return response;
+        })
+        .catch(() => caches.match(request).then(response => response || caches.match("/index.html")))
+    );
+    return;
+  }
+
+  event.respondWith(
+    caches.match(request).then(cached => {
+      if (cached) return cached;
+
+      return fetch(request).then(response => {
+        if (!response || response.status !== 200 || response.type !== "basic") {
+          return response;
+        }
+
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
+        return response;
+      });
+    })
+  );
+});
