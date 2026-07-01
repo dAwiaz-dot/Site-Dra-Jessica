@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title>Monograma JD da Clínica Dra Jessica Daniela</title>
+  <rect width="512" height="512" fill="#080808"/>
+  <rect x="52" y="52" width="408" height="408" rx="86" fill="#101010" stroke="#C9A655" stroke-width="12"/>
+  <rect x="72" y="72" width="368" height="368" rx="69" fill="none" stroke="#E4C477" stroke-opacity=".38" stroke-width="3"/>
+  <text
+    x="256"
+    y="334"
+    fill="#E4C477"
+    font-family="Times New Roman, Times, serif"
+    font-size="244"
+    font-weight="700"
+    text-anchor="middle"
+  >JD</text>
+</svg>

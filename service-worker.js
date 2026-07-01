@@ -1,4 +1,4 @@
-const CACHE_NAME = "dra-jessica-site-v3";
+const CACHE_NAME = "dra-jessica-site-v4";
 
 const PRECACHE_URLS = [
   "/",
@@ -8,6 +8,7 @@ const PRECACHE_URLS = [
   "/robots.txt",
   "/sitemap.xml",
   "/favicon.png",
+  "/favicon.svg",
   "/favicon-32.png",
   "/apple-touch-icon.png",
   "/og-image.png",
