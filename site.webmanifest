@@ -2,7 +2,7 @@
   "id": "/",
   "name": "Clínica Dra Jessica Daniela",
   "short_name": "Dra Jessica",
-  "description": "Facetas, lentes, odontologia estética, ortodontia e harmonização orofacial em Varginha-MG.",
+  "description": "Dentista em Varginha para lente em resina, facetas, odontologia estética, ortodontia e harmonização orofacial.",
   "lang": "pt-BR",
   "dir": "ltr",
   "start_url": "/?source=pwa",
@@ -19,13 +19,13 @@
   ],
   "icons": [
     {
-      "src": "assets/favicon-192.png",
+      "src": "assets/icons/favicon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "assets/favicon-512.png",
+      "src": "assets/icons/favicon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
@@ -41,20 +41,20 @@
       "url": "/#contato",
       "icons": [
         {
-          "src": "assets/favicon-192.png",
+          "src": "assets/icons/favicon-192.png",
           "sizes": "192x192",
           "type": "image/png"
         }
       ]
     },
     {
-      "name": "Facetas e lentes",
+      "name": "Lente em resina e facetas",
       "short_name": "Facetas",
-      "description": "Ver facetas, lentes e estética do sorriso",
+      "description": "Ver lente em resina, facetas e estética do sorriso",
       "url": "/#facetas",
       "icons": [
         {
-          "src": "assets/favicon-192.png",
+          "src": "assets/icons/favicon-192.png",
           "sizes": "192x192",
           "type": "image/png"
         }
@@ -67,7 +67,7 @@
       "url": "/#harmonizacao",
       "icons": [
         {
-          "src": "assets/favicon-192.png",
+          "src": "assets/icons/favicon-192.png",
           "sizes": "192x192",
           "type": "image/png"
         }
@@ -80,7 +80,7 @@
       "url": "/#antes-de-agendar",
       "icons": [
         {
-          "src": "assets/favicon-192.png",
+          "src": "assets/icons/favicon-192.png",
           "sizes": "192x192",
           "type": "image/png"
         }
@@ -93,7 +93,7 @@
       "url": "/#especialidades",
       "icons": [
         {
-          "src": "assets/favicon-192.png",
+          "src": "assets/icons/favicon-192.png",
           "sizes": "192x192",
           "type": "image/png"
         }
