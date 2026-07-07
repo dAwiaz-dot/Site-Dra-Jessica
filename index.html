@@ -1745,6 +1745,17 @@ section,
   align-items: stretch;
 }
 
+.hof-gallery.lens-carousel {
+  display: block;
+  grid-template-columns: none;
+  gap: 0;
+}
+
+.hof-gallery .lens-slide {
+  flex-basis: clamp(280px, 40vw, 620px);
+  height: clamp(320px, 38vw, 520px);
+}
+
 .hof-frame {
   position: relative;
   min-height: 260px;
@@ -3183,74 +3194,80 @@ body.cookies-open .whatsapp-float { bottom: 118px; }
         </div>
         <p>Uma seleção de casos de HOF com foco em equilíbrio facial, naturalidade, suavização de marcas, preenchimento labial e valorização dos traços.</p>
       </div>
-      <div class="hof-gallery">
-        <figure class="hof-frame hof-feature">
-          <img src="assets/images/hof/hof-caso-01.jpeg" alt="Antes e depois de harmonização orofacial com equilíbrio facial" width="1600" height="1146" loading="lazy" decoding="async">
-          <figcaption class="hof-frame-caption">
-            <strong>HOF</strong>
-            <span>Equilíbrio facial</span>
-          </figcaption>
-        </figure>
-        <div class="hof-reel">
-          <figure class="hof-frame">
-            <img src="assets/images/hof/hof-caso-02.jpeg" alt="Caso clínico de harmonização orofacial com resultado natural" width="1600" height="1446" loading="lazy" decoding="async">
-            <figcaption class="hof-frame-caption">
-              <strong>01</strong>
-              <span>Naturalidade</span>
-            </figcaption>
-          </figure>
-          <figure class="hof-frame">
-            <img src="assets/images/hof/hof-caso-03.jpeg" alt="Detalhe de preenchimento labial em harmonização orofacial" width="1404" height="1600" loading="lazy" decoding="async">
-            <figcaption class="hof-frame-caption">
-              <strong>02</strong>
-              <span>Lábios</span>
-            </figcaption>
-          </figure>
-          <figure class="hof-frame">
-            <img src="assets/images/hof/hof-caso-04.jpeg" alt="Antes e depois de harmonização facial com suavização de expressão" width="1600" height="1600" loading="lazy" decoding="async">
-            <figcaption class="hof-frame-caption">
-              <strong>03</strong>
-              <span>Expressão</span>
-            </figcaption>
-          </figure>
-          <figure class="hof-frame">
-            <img src="assets/images/hof/hof-caso-05.jpeg" alt="Resultado de harmonização orofacial em perfil facial" width="1600" height="1600" loading="lazy" decoding="async">
-            <figcaption class="hof-frame-caption">
-              <strong>04</strong>
-              <span>Perfil</span>
-            </figcaption>
-          </figure>
+      <div class="hof-gallery lens-carousel" data-lens-carousel>
+        <button class="lens-carousel-btn prev" type="button" aria-label="Imagem anterior de HOF" data-lens-prev>
+          <span aria-hidden="true">&lsaquo;</span>
+        </button>
+        <div class="lens-carousel-viewport" tabindex="0" aria-label="Arraste para ver mais casos de harmonização orofacial">
+          <div class="lens-carousel-track">
+            <figure class="hof-frame lens-frame lens-slide" data-lens-slide>
+              <img src="assets/images/hof/hof-caso-01.jpeg" alt="Antes e depois de harmonização orofacial com equilíbrio facial" width="1600" height="1146" loading="lazy" decoding="async">
+              <figcaption class="hof-frame-caption lens-frame-caption">
+                <strong>HOF</strong>
+                <span>Equilíbrio facial</span>
+              </figcaption>
+            </figure>
+            <figure class="hof-frame lens-frame lens-slide" data-lens-slide>
+              <img src="assets/images/hof/hof-caso-02.jpeg" alt="Caso clínico de harmonização orofacial com resultado natural" width="1600" height="1446" loading="lazy" decoding="async">
+              <figcaption class="hof-frame-caption lens-frame-caption">
+                <strong>01</strong>
+                <span>Naturalidade</span>
+              </figcaption>
+            </figure>
+            <figure class="hof-frame lens-frame lens-slide" data-lens-slide>
+              <img src="assets/images/hof/hof-caso-03.jpeg" alt="Detalhe de preenchimento labial em harmonização orofacial" width="1404" height="1600" loading="lazy" decoding="async">
+              <figcaption class="hof-frame-caption lens-frame-caption">
+                <strong>02</strong>
+                <span>Lábios</span>
+              </figcaption>
+            </figure>
+            <figure class="hof-frame lens-frame lens-slide" data-lens-slide>
+              <img src="assets/images/hof/hof-caso-04.jpeg" alt="Antes e depois de harmonização facial com suavização de expressão" width="1600" height="1600" loading="lazy" decoding="async">
+              <figcaption class="hof-frame-caption lens-frame-caption">
+                <strong>03</strong>
+                <span>Expressão</span>
+              </figcaption>
+            </figure>
+            <figure class="hof-frame lens-frame lens-slide" data-lens-slide>
+              <img src="assets/images/hof/hof-caso-05.jpeg" alt="Resultado de harmonização orofacial em perfil facial" width="1600" height="1600" loading="lazy" decoding="async">
+              <figcaption class="hof-frame-caption lens-frame-caption">
+                <strong>04</strong>
+                <span>Perfil</span>
+              </figcaption>
+            </figure>
+            <figure class="hof-frame lens-frame lens-slide" data-lens-slide>
+              <img src="assets/images/hof/hof-caso-06-antes.jpeg" alt="Antes e depois frontal de harmonização orofacial com resultado natural" width="1280" height="1202" loading="lazy" decoding="async">
+              <figcaption class="hof-frame-caption lens-frame-caption">
+                <strong>05</strong>
+                <span>Frontal natural</span>
+              </figcaption>
+            </figure>
+            <figure class="hof-frame lens-frame lens-slide" data-lens-slide>
+              <img src="assets/images/hof/hof-caso-09.jpeg" alt="Antes e depois de perfil em harmonização orofacial com valorização do contorno facial" width="1280" height="1118" loading="lazy" decoding="async">
+              <figcaption class="hof-frame-caption lens-frame-caption">
+                <strong>06</strong>
+                <span>Perfil e contorno</span>
+              </figcaption>
+            </figure>
+            <figure class="hof-frame lens-frame lens-slide" data-lens-slide>
+              <img src="assets/images/hof/hof-caso-07.jpeg" alt="Antes e depois frontal de harmonização orofacial com preenchimento facial" width="1280" height="1280" loading="lazy" decoding="async">
+              <figcaption class="hof-frame-caption lens-frame-caption">
+                <strong>07</strong>
+                <span>Volume e proporção</span>
+              </figcaption>
+            </figure>
+            <figure class="hof-frame lens-frame lens-slide" data-lens-slide>
+              <img src="assets/images/hof/hof-caso-08.jpeg" alt="Antes e depois de perfil em harmonização orofacial" width="1280" height="1280" loading="lazy" decoding="async">
+              <figcaption class="hof-frame-caption lens-frame-caption">
+                <strong>08</strong>
+                <span>Contorno facial</span>
+              </figcaption>
+            </figure>
+          </div>
         </div>
-        <div class="hof-extra" aria-label="Novos casos de harmonização orofacial">
-          <figure class="hof-frame">
-            <img src="assets/images/hof/hof-caso-06-antes.jpeg" alt="Antes e depois frontal de harmonização orofacial com resultado natural" width="1280" height="1202" loading="lazy" decoding="async">
-            <figcaption class="hof-frame-caption">
-              <strong>05</strong>
-              <span>Frontal natural</span>
-            </figcaption>
-          </figure>
-          <figure class="hof-frame">
-            <img src="assets/images/hof/hof-caso-09.jpeg" alt="Antes e depois de perfil em harmonização orofacial com valorização do contorno facial" width="1280" height="1118" loading="lazy" decoding="async">
-            <figcaption class="hof-frame-caption">
-              <strong>06</strong>
-              <span>Perfil e contorno</span>
-            </figcaption>
-          </figure>
-          <figure class="hof-frame">
-            <img src="assets/images/hof/hof-caso-07.jpeg" alt="Antes e depois frontal de harmonização orofacial com preenchimento facial" width="1280" height="1280" loading="lazy" decoding="async">
-            <figcaption class="hof-frame-caption">
-              <strong>07</strong>
-              <span>Volume e proporção</span>
-            </figcaption>
-          </figure>
-          <figure class="hof-frame">
-            <img src="assets/images/hof/hof-caso-08.jpeg" alt="Antes e depois de perfil em harmonização orofacial" width="1280" height="1280" loading="lazy" decoding="async">
-            <figcaption class="hof-frame-caption">
-              <strong>08</strong>
-              <span>Contorno facial</span>
-            </figcaption>
-          </figure>
-        </div>
+        <button class="lens-carousel-btn next" type="button" aria-label="Proxima imagem de HOF" data-lens-next>
+          <span aria-hidden="true">&rsaquo;</span>
+        </button>
       </div>
       <p class="hof-cinema-note">As imagens mostram casos clínicos autorizados. Indicação, técnica, quantidade de produto e manutenção dependem da avaliação individual de cada paciente.</p>
     </div>
@@ -3710,25 +3727,26 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 });
 
 function setupLensCarousel() {
-  const carousel = document.querySelector("[data-lens-carousel]");
-  if (!carousel) return;
+  const carousels = document.querySelectorAll("[data-lens-carousel]");
+  if (!carousels.length) return;
 
-  const viewport = carousel.querySelector(".lens-carousel-viewport");
-  const track = carousel.querySelector(".lens-carousel-track");
-  if (!viewport || !track) return;
+  carousels.forEach(carousel => {
+    const viewport = carousel.querySelector(".lens-carousel-viewport");
+    const track = carousel.querySelector(".lens-carousel-track");
+    if (!viewport || !track) return;
 
-  const originalSlides = Array.from(track.querySelectorAll("[data-lens-slide]"));
-  const prevButton = carousel.querySelector("[data-lens-prev]");
-  const nextButton = carousel.querySelector("[data-lens-next]");
+    const originalSlides = Array.from(track.querySelectorAll("[data-lens-slide]"));
+    const prevButton = carousel.querySelector("[data-lens-prev]");
+    const nextButton = carousel.querySelector("[data-lens-next]");
 
-  if (!prevButton || !nextButton || originalSlides.length < 2) return;
+    if (!prevButton || !nextButton || originalSlides.length < 2) return;
 
-  const cloneSlide = slide => {
-    const clone = slide.cloneNode(true);
-    clone.setAttribute("aria-hidden", "true");
-    clone.dataset.lensClone = "true";
-    return clone;
-  };
+    const cloneSlide = slide => {
+      const clone = slide.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      clone.dataset.lensClone = "true";
+      return clone;
+    };
 
   const beforeClones = originalSlides.map(cloneSlide);
   const afterClones = originalSlides.map(cloneSlide);
@@ -3934,12 +3952,13 @@ function setupLensCarousel() {
     snapCloneToOriginal();
   });
 
-  if (!reducedMotion) {
-    window.setInterval(() => {
-      if (paused || document.visibilityState !== "visible") return;
-      moveCarousel(1, false);
-    }, 3800);
-  }
+    if (!reducedMotion) {
+      window.setInterval(() => {
+        if (paused || document.visibilityState !== "visible") return;
+        moveCarousel(1, false);
+      }, 3800);
+    }
+  });
 }
 
 setupLensCarousel();
