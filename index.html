@@ -1582,6 +1582,151 @@ section,
   text-transform: uppercase;
 }
 
+.hof-cinema {
+  position: relative;
+  margin-top: 5rem;
+  padding: 2.2rem;
+  border: 1px solid var(--gold-border);
+  background:
+    linear-gradient(135deg, rgba(201, 166, 85, .13), transparent 36%),
+    linear-gradient(220deg, rgba(255, 255, 255, .04), transparent 42%),
+    var(--black);
+  overflow: hidden;
+}
+
+.hof-cinema::before {
+  content: "";
+  position: absolute;
+  inset: 1rem;
+  border: 1px solid rgba(201, 166, 85, .12);
+  pointer-events: none;
+}
+
+.hof-cinema-head {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, .72fr) minmax(240px, .28fr);
+  gap: 2rem;
+  align-items: end;
+  margin-bottom: 2rem;
+}
+
+.hof-cinema-head h3 {
+  max-width: 780px;
+  color: var(--white);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.3rem, 5vw, 4.4rem);
+  font-weight: 600;
+  line-height: .98;
+}
+
+.hof-cinema-head h3 em {
+  color: var(--gold);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.hof-cinema-head p {
+  color: rgba(255, 255, 255, .66);
+  font-size: .92rem;
+  font-weight: 300;
+  line-height: 1.85;
+}
+
+.hof-gallery {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.22fr) minmax(320px, .78fr);
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.hof-frame {
+  position: relative;
+  min-height: 260px;
+  border: 1px solid rgba(201, 166, 85, .24);
+  background: var(--black);
+  overflow: hidden;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .42);
+}
+
+.hof-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(.96) contrast(1.04);
+  transition: transform .55s ease, filter .55s ease;
+}
+
+.hof-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(0, 0, 0, .68), transparent 42%),
+    linear-gradient(130deg, rgba(201, 166, 85, .16), transparent 42%);
+  pointer-events: none;
+}
+
+.hof-frame:hover img {
+  transform: scale(1.025);
+  filter: saturate(1.04) contrast(1.08);
+}
+
+.hof-feature {
+  min-height: 560px;
+}
+
+.hof-reel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.hof-reel .hof-frame {
+  min-height: 272px;
+}
+
+.hof-frame-caption {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1;
+  display: grid;
+  gap: .15rem;
+}
+
+.hof-frame-caption strong {
+  color: var(--white);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.35rem;
+  line-height: 1.05;
+}
+
+.hof-frame-caption span {
+  color: rgba(255, 255, 255, .66);
+  font-size: .66rem;
+  letter-spacing: 1.6px;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.hof-cinema-note {
+  position: relative;
+  z-index: 1;
+  margin-top: 1.3rem;
+  color: rgba(255, 255, 255, .48);
+  font-size: .78rem;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
 .trust-section { background: var(--black); }
 
 .trust-grid {
@@ -2154,6 +2299,8 @@ body.cookies-open .whatsapp-float { bottom: 118px; }
 .signature-media img,
 .lens-cinema,
 .lens-frame,
+.hof-cinema,
+.hof-frame,
 .focus-grid,
 .focus-card,
 .services-grid,
@@ -2219,6 +2366,8 @@ body.cookies-open .whatsapp-float { bottom: 118px; }
   .signature-grid,
   .lens-cinema-head,
   .lens-gallery,
+  .hof-cinema-head,
+  .hof-gallery,
   .local-seo-grid,
   .hof-grid,
   .social-cta-grid,
@@ -2233,6 +2382,8 @@ body.cookies-open .whatsapp-float { bottom: 118px; }
   .cases-grid { grid-template-columns: repeat(2, 1fr); }
   .lens-feature { min-height: 560px; }
   .lens-strip .lens-frame { min-height: 420px; }
+  .hof-feature { min-height: 460px; }
+  .hof-reel .hof-frame { min-height: 320px; }
 }
 
 @media (max-width: 900px) {
@@ -2271,6 +2422,8 @@ body.cookies-open .whatsapp-float { bottom: 118px; }
   .schedule-steps { grid-template-columns: 1fr; }
   .lens-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .lens-strip .lens-frame { min-height: 360px; }
+  .hof-reel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hof-reel .hof-frame { min-height: 300px; }
   .case-card.large { grid-column: span 1; }
 }
 
@@ -2318,24 +2471,50 @@ body.cookies-open .whatsapp-float { bottom: 118px; }
     padding: 1.05rem;
   }
   .lens-cinema::before { inset: .55rem; }
+  .hof-cinema {
+    margin-top: 4rem;
+    padding: 1.05rem;
+  }
+  .hof-cinema::before { inset: .55rem; }
   .lens-cinema-head {
     gap: 1rem;
     margin-bottom: 1.15rem;
   }
+  .hof-cinema-head {
+    gap: 1rem;
+    margin-bottom: 1.15rem;
+  }
   .lens-cinema-head h3 { font-size: clamp(2.05rem, 10vw, 3.1rem); }
+  .hof-cinema-head h3 { font-size: clamp(2.05rem, 10vw, 3.1rem); }
   .lens-feature { min-height: 500px; }
+  .hof-feature {
+    aspect-ratio: 1600 / 1146;
+    min-height: 0;
+  }
   .lens-strip {
     gap: .65rem;
     grid-template-columns: 1fr 1fr;
   }
   .lens-strip .lens-frame { min-height: 300px; }
+  .hof-reel {
+    gap: .65rem;
+    grid-template-columns: 1fr;
+  }
+  .hof-reel .hof-frame { min-height: 260px; }
   .lens-frame-caption {
+    left: .75rem;
+    right: .75rem;
+    bottom: .75rem;
+  }
+  .hof-frame-caption {
     left: .75rem;
     right: .75rem;
     bottom: .75rem;
   }
   .lens-frame-caption strong { font-size: 1.08rem; }
   .lens-frame-caption span { font-size: .58rem; }
+  .hof-frame-caption strong { font-size: 1.08rem; }
+  .hof-frame-caption span { font-size: .58rem; }
   .about-photo img { height: 430px; }
   .about-badge { right: 0; }
   .cases-grid { grid-template-columns: 1fr; }
@@ -2752,6 +2931,56 @@ body.cookies-open .whatsapp-float { bottom: 118px; }
           <span>Sorriso, face e proporção no mesmo planejamento</span>
         </div>
       </div>
+    </div>
+
+    <div class="hof-cinema" aria-label="Galeria de casos de harmonização orofacial">
+      <div class="hof-cinema-head">
+        <div>
+          <div class="section-label"><span>Casos de HOF</span></div>
+          <h3>Harmonização orofacial em uma sequência <em>cinematográfica.</em></h3>
+        </div>
+        <p>Uma seleção de casos de HOF com foco em equilíbrio facial, naturalidade, suavização de marcas, preenchimento labial e valorização dos traços.</p>
+      </div>
+      <div class="hof-gallery">
+        <figure class="hof-frame hof-feature">
+          <img src="assets/images/hof/hof-caso-01.jpeg" alt="Antes e depois de harmonização orofacial com equilíbrio facial" width="1600" height="1146" loading="lazy" decoding="async">
+          <figcaption class="hof-frame-caption">
+            <strong>HOF</strong>
+            <span>Equilíbrio facial</span>
+          </figcaption>
+        </figure>
+        <div class="hof-reel">
+          <figure class="hof-frame">
+            <img src="assets/images/hof/hof-caso-02.jpeg" alt="Caso clínico de harmonização orofacial com resultado natural" width="1600" height="1446" loading="lazy" decoding="async">
+            <figcaption class="hof-frame-caption">
+              <strong>01</strong>
+              <span>Naturalidade</span>
+            </figcaption>
+          </figure>
+          <figure class="hof-frame">
+            <img src="assets/images/hof/hof-caso-03.jpeg" alt="Detalhe de preenchimento labial em harmonização orofacial" width="1404" height="1600" loading="lazy" decoding="async">
+            <figcaption class="hof-frame-caption">
+              <strong>02</strong>
+              <span>Lábios</span>
+            </figcaption>
+          </figure>
+          <figure class="hof-frame">
+            <img src="assets/images/hof/hof-caso-04.jpeg" alt="Antes e depois de harmonização facial com suavização de expressão" width="1600" height="1600" loading="lazy" decoding="async">
+            <figcaption class="hof-frame-caption">
+              <strong>03</strong>
+              <span>Expressão</span>
+            </figcaption>
+          </figure>
+          <figure class="hof-frame">
+            <img src="assets/images/hof/hof-caso-05.jpeg" alt="Resultado de harmonização orofacial em perfil facial" width="1600" height="1600" loading="lazy" decoding="async">
+            <figcaption class="hof-frame-caption">
+              <strong>04</strong>
+              <span>Perfil</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+      <p class="hof-cinema-note">As imagens mostram casos clínicos autorizados. Indicação, técnica, quantidade de produto e manutenção dependem da avaliação individual de cada paciente.</p>
     </div>
   </section>
 
