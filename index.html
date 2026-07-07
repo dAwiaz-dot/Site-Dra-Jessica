@@ -830,6 +830,151 @@ section,
   text-transform: uppercase;
 }
 
+.lens-cinema {
+  position: relative;
+  margin-top: 6rem;
+  padding: 2.2rem;
+  border: 1px solid var(--gold-border);
+  background:
+    linear-gradient(115deg, rgba(201, 166, 85, .12), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, .035), rgba(255, 255, 255, .01)),
+    var(--black2);
+  overflow: hidden;
+}
+
+.lens-cinema::before {
+  content: "";
+  position: absolute;
+  inset: 1rem;
+  border: 1px solid rgba(201, 166, 85, .12);
+  pointer-events: none;
+}
+
+.lens-cinema-head {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, .72fr) minmax(240px, .28fr);
+  gap: 2rem;
+  align-items: end;
+  margin-bottom: 2rem;
+}
+
+.lens-cinema-head h3 {
+  color: var(--white);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.3rem, 5vw, 4.4rem);
+  font-weight: 600;
+  line-height: .98;
+  max-width: 780px;
+}
+
+.lens-cinema-head h3 em {
+  color: var(--gold);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.lens-cinema-head p {
+  color: rgba(255, 255, 255, .66);
+  font-size: .92rem;
+  font-weight: 300;
+  line-height: 1.85;
+}
+
+.lens-gallery {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(300px, .95fr) minmax(0, 1.2fr);
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.lens-frame {
+  position: relative;
+  min-height: 240px;
+  border: 1px solid rgba(201, 166, 85, .24);
+  background: var(--black);
+  overflow: hidden;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .42);
+}
+
+.lens-frame img {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: saturate(.96) contrast(1.04);
+  transition: transform .55s ease, filter .55s ease;
+}
+
+.lens-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(0, 0, 0, .72), transparent 44%),
+    linear-gradient(135deg, rgba(201, 166, 85, .16), transparent 42%);
+  pointer-events: none;
+}
+
+.lens-frame:hover img {
+  transform: scale(1.035);
+  filter: saturate(1.06) contrast(1.08);
+}
+
+.lens-feature {
+  min-height: 620px;
+}
+
+.lens-strip {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.lens-strip .lens-frame {
+  min-height: 620px;
+}
+
+.lens-frame-caption {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1;
+  display: grid;
+  gap: .15rem;
+}
+
+.lens-frame-caption strong {
+  color: var(--white);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.35rem;
+  line-height: 1.05;
+}
+
+.lens-frame-caption span {
+  color: rgba(255, 255, 255, .66);
+  font-size: .66rem;
+  letter-spacing: 1.6px;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.lens-cinema-note {
+  position: relative;
+  z-index: 1;
+  margin-top: 1.3rem;
+  color: rgba(255, 255, 255, .48);
+  font-size: .78rem;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
 .focus-section {
   background: linear-gradient(180deg, var(--black2), #0c0c0c);
   position: relative;
@@ -2007,6 +2152,8 @@ body.cookies-open .whatsapp-float { bottom: 118px; }
 .instagram-links,
 .instagram-link,
 .signature-media img,
+.lens-cinema,
+.lens-frame,
 .focus-grid,
 .focus-card,
 .services-grid,
@@ -2070,6 +2217,8 @@ body.cookies-open .whatsapp-float { bottom: 118px; }
   .hero-photo img { min-height: 540px; }
   .instagram-strip,
   .signature-grid,
+  .lens-cinema-head,
+  .lens-gallery,
   .local-seo-grid,
   .hof-grid,
   .social-cta-grid,
@@ -2082,6 +2231,8 @@ body.cookies-open .whatsapp-float { bottom: 118px; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .search-topic-list { grid-template-columns: 1fr; }
   .cases-grid { grid-template-columns: repeat(2, 1fr); }
+  .lens-feature { min-height: 560px; }
+  .lens-strip .lens-frame { min-height: 420px; }
 }
 
 @media (max-width: 900px) {
@@ -2118,6 +2269,8 @@ body.cookies-open .whatsapp-float { bottom: 118px; }
   .hof-list,
   .clinic-points,
   .schedule-steps { grid-template-columns: 1fr; }
+  .lens-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lens-strip .lens-frame { min-height: 360px; }
   .case-card.large { grid-column: span 1; }
 }
 
@@ -2160,6 +2313,29 @@ body.cookies-open .whatsapp-float { bottom: 118px; }
   }
   .signature-list li { grid-template-columns: 38px 1fr; }
   .signature-list strong { width: 38px; height: 38px; font-size: 1.05rem; }
+  .lens-cinema {
+    margin-top: 4rem;
+    padding: 1.05rem;
+  }
+  .lens-cinema::before { inset: .55rem; }
+  .lens-cinema-head {
+    gap: 1rem;
+    margin-bottom: 1.15rem;
+  }
+  .lens-cinema-head h3 { font-size: clamp(2.05rem, 10vw, 3.1rem); }
+  .lens-feature { min-height: 500px; }
+  .lens-strip {
+    gap: .65rem;
+    grid-template-columns: 1fr 1fr;
+  }
+  .lens-strip .lens-frame { min-height: 300px; }
+  .lens-frame-caption {
+    left: .75rem;
+    right: .75rem;
+    bottom: .75rem;
+  }
+  .lens-frame-caption strong { font-size: 1.08rem; }
+  .lens-frame-caption span { font-size: .58rem; }
   .about-photo img { height: 430px; }
   .about-badge { right: 0; }
   .cases-grid { grid-template-columns: 1fr; }
@@ -2306,6 +2482,63 @@ body.cookies-open .whatsapp-float { bottom: 118px; }
           <a class="btn-outline" href="#casos">Ver casos</a>
         </div>
       </div>
+    </div>
+
+    <div class="lens-cinema" aria-label="Galeria de casos de lente em resina">
+      <div class="lens-cinema-head">
+        <div>
+          <div class="section-label"><span>Lentes em resina</span></div>
+          <h3>Sorrisos reais em uma sequência <em>cinematográfica.</em></h3>
+        </div>
+        <p>Uma seleção de casos de lente em resina e facetas em resina composta, com foco em proporção, cor, acabamento e naturalidade para diferentes perfis de sorriso.</p>
+      </div>
+      <div class="lens-gallery">
+        <figure class="lens-frame lens-feature">
+          <img src="assets/images/lenses/lente-resina-caso-01.jpeg" alt="Caso de lente em resina com sorriso natural" width="1066" height="1600" loading="lazy" decoding="async">
+          <figcaption class="lens-frame-caption">
+            <strong>Lente em resina</strong>
+            <span>Proporção e brilho natural</span>
+          </figcaption>
+        </figure>
+        <div class="lens-strip">
+          <figure class="lens-frame">
+            <img src="assets/images/lenses/lente-resina-caso-02.jpeg" alt="Resultado estético de lente em resina em sorriso jovem" width="1066" height="1600" loading="lazy" decoding="async">
+            <figcaption class="lens-frame-caption">
+              <strong>01</strong>
+              <span>Forma</span>
+            </figcaption>
+          </figure>
+          <figure class="lens-frame">
+            <img src="assets/images/lenses/lente-resina-caso-03.jpeg" alt="Sorriso masculino com facetas em resina composta" width="1066" height="1600" loading="lazy" decoding="async">
+            <figcaption class="lens-frame-caption">
+              <strong>02</strong>
+              <span>Textura</span>
+            </figcaption>
+          </figure>
+          <figure class="lens-frame">
+            <img src="assets/images/lenses/lente-resina-caso-04.jpeg" alt="Sorriso feminino com lente em resina" width="1066" height="1600" loading="lazy" decoding="async">
+            <figcaption class="lens-frame-caption">
+              <strong>03</strong>
+              <span>Leveza</span>
+            </figcaption>
+          </figure>
+          <figure class="lens-frame">
+            <img src="assets/images/lenses/lente-resina-caso-05.jpeg" alt="Resultado de estética dental com lentes em resina" width="1002" height="1600" loading="lazy" decoding="async">
+            <figcaption class="lens-frame-caption">
+              <strong>04</strong>
+              <span>Equilíbrio</span>
+            </figcaption>
+          </figure>
+          <figure class="lens-frame">
+            <img src="assets/images/lenses/lente-resina-caso-06.jpeg" alt="Caso de lente em resina com resultado natural" width="992" height="1600" loading="lazy" decoding="async">
+            <figcaption class="lens-frame-caption">
+              <strong>05</strong>
+              <span>Acabamento</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+      <p class="lens-cinema-note">As imagens mostram casos clínicos autorizados. Indicação, cor, formato e manutenção dependem da avaliação individual de cada paciente.</p>
     </div>
   </section>
 
