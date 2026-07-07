@@ -1,4 +1,4 @@
-const CACHE_NAME = "dra-jessica-site-v9";
+const CACHE_NAME = "dra-jessica-site-v11";
 
 const PRECACHE_URLS = [
   "/",
@@ -17,6 +17,7 @@ const PRECACHE_URLS = [
   "/assets/branding/logo-jd-branco.png",
   "/assets/images/og-image.png",
   "/assets/images/portraits/dra-jessica-daniela.jpg",
+  "/assets/images/portraits/dra-jessica-hero.jpeg",
   "/assets/images/portraits/dra-jessica-atendimento-premium.jpg",
   "/assets/images/portraits/dra-jessica-jaleco.jpeg",
   "/assets/images/clinic/fachada-clinica-premium.jpg",
@@ -42,9 +43,10 @@ const PRECACHE_URLS = [
   "/assets/images/hof/hof-caso-03.jpeg",
   "/assets/images/hof/hof-caso-04.jpeg",
   "/assets/images/hof/hof-caso-05.jpeg",
-  "/assets/images/hof/hof-caso-06.jpeg",
+  "/assets/images/hof/hof-caso-06-antes.jpeg",
   "/assets/images/hof/hof-caso-07.jpeg",
-  "/assets/images/hof/hof-caso-08.jpeg"
+  "/assets/images/hof/hof-caso-08.jpeg",
+  "/assets/images/hof/hof-caso-09.jpeg"
 ];
 
 self.addEventListener("install", event => {
