@@ -1,4 +1,4 @@
-const CACHE_NAME = "dra-jessica-site-v8";
+const CACHE_NAME = "dra-jessica-site-v9";
 
 const PRECACHE_URLS = [
   "/",
@@ -41,7 +41,10 @@ const PRECACHE_URLS = [
   "/assets/images/hof/hof-caso-02.jpeg",
   "/assets/images/hof/hof-caso-03.jpeg",
   "/assets/images/hof/hof-caso-04.jpeg",
-  "/assets/images/hof/hof-caso-05.jpeg"
+  "/assets/images/hof/hof-caso-05.jpeg",
+  "/assets/images/hof/hof-caso-06.jpeg",
+  "/assets/images/hof/hof-caso-07.jpeg",
+  "/assets/images/hof/hof-caso-08.jpeg"
 ];
 
 self.addEventListener("install", event => {

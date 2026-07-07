@@ -885,30 +885,95 @@ section,
 .lens-gallery {
   position: relative;
   z-index: 1;
-  display: grid;
-  grid-template-columns: minmax(300px, .95fr) minmax(0, 1.2fr);
+}
+
+.lens-carousel {
+  margin-inline: -2.2rem;
+  padding: .7rem 0 2.3rem;
+}
+
+.lens-carousel::before,
+.lens-carousel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 1.7rem;
+  z-index: 3;
+  width: min(18vw, 180px);
+  pointer-events: none;
+}
+
+.lens-carousel::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--black2), rgba(15, 15, 15, 0));
+}
+
+.lens-carousel::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--black2), rgba(15, 15, 15, 0));
+}
+
+.lens-carousel-viewport {
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  cursor: grab;
+  user-select: none;
+  padding: 2.6rem max(2.2rem, calc((100% - 450px) / 2)) 3.5rem;
+  touch-action: pan-y pinch-zoom;
+}
+
+.lens-carousel-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.lens-carousel-viewport.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+}
+
+.lens-carousel-track {
+  display: flex;
+  align-items: center;
   gap: 1rem;
-  align-items: stretch;
+  width: max-content;
 }
 
 .lens-frame {
   position: relative;
-  min-height: 240px;
   border: 1px solid rgba(201, 166, 85, .24);
   background: var(--black);
   overflow: hidden;
   box-shadow: 0 24px 70px rgba(0, 0, 0, .42);
 }
 
+.lens-slide {
+  flex: 0 0 clamp(250px, 30vw, 450px);
+  height: clamp(390px, 49vw, 660px);
+  scroll-snap-align: center;
+  opacity: .45;
+  transform: scale(.78);
+  transform-origin: center;
+  transition:
+    transform .55s cubic-bezier(.2, .8, .2, 1),
+    opacity .55s ease,
+    border-color .55s ease,
+    box-shadow .55s ease,
+    filter .55s ease;
+}
+
 .lens-frame img {
   width: 100%;
   height: 100%;
-  min-height: inherit;
   object-fit: cover;
   object-position: center;
   display: block;
-  filter: saturate(.96) contrast(1.04);
-  transition: transform .55s ease, filter .55s ease;
+  filter: saturate(.88) contrast(1.02);
+  transform: scale(1.02);
+  transition: transform .65s ease, filter .65s ease;
+  -webkit-user-drag: none;
 }
 
 .lens-frame::after {
@@ -916,28 +981,22 @@ section,
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to top, rgba(0, 0, 0, .72), transparent 44%),
+    linear-gradient(to top, rgba(0, 0, 0, .75), transparent 48%),
     linear-gradient(135deg, rgba(201, 166, 85, .16), transparent 42%);
   pointer-events: none;
 }
 
-.lens-frame:hover img {
-  transform: scale(1.035);
-  filter: saturate(1.06) contrast(1.08);
+.lens-slide.is-active {
+  z-index: 2;
+  opacity: 1;
+  transform: scale(1);
+  border-color: rgba(201, 166, 85, .58);
+  box-shadow: 0 34px 110px rgba(0, 0, 0, .62);
 }
 
-.lens-feature {
-  min-height: 620px;
-}
-
-.lens-strip {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.lens-strip .lens-frame {
-  min-height: 620px;
+.lens-slide.is-active img {
+  filter: saturate(1.05) contrast(1.08);
+  transform: scale(1);
 }
 
 .lens-frame-caption {
@@ -948,6 +1007,14 @@ section,
   z-index: 1;
   display: grid;
   gap: .15rem;
+  opacity: .58;
+  transform: translateY(8px);
+  transition: opacity .45s ease, transform .45s ease;
+}
+
+.lens-slide.is-active .lens-frame-caption {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .lens-frame-caption strong {
@@ -963,6 +1030,41 @@ section,
   letter-spacing: 1.6px;
   line-height: 1.25;
   text-transform: uppercase;
+}
+
+.lens-carousel-btn {
+  position: absolute;
+  top: 50%;
+  z-index: 4;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(201, 166, 85, .45);
+  border-radius: 50%;
+  color: var(--white);
+  background: rgba(10, 10, 10, .82);
+  backdrop-filter: blur(12px);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: background .25s ease, border-color .25s ease, transform .25s ease;
+}
+
+.lens-carousel-btn:hover,
+.lens-carousel-btn:focus-visible {
+  background: rgba(201, 166, 85, .22);
+  border-color: rgba(201, 166, 85, .78);
+  transform: translateY(-50%) scale(1.04);
+}
+
+.lens-carousel-btn.prev {
+  left: 1.25rem;
+}
+
+.lens-carousel-btn.next {
+  right: 1.25rem;
 }
 
 .lens-cinema-note {
@@ -1692,6 +1794,17 @@ section,
   min-height: 272px;
 }
 
+.hof-extra {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(220px, .72fr) repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.hof-extra .hof-frame {
+  min-height: 360px;
+}
+
 .hof-frame-caption {
   position: absolute;
   left: 1rem;
@@ -2380,10 +2493,14 @@ body.cookies-open .whatsapp-float { bottom: 118px; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .search-topic-list { grid-template-columns: 1fr; }
   .cases-grid { grid-template-columns: repeat(2, 1fr); }
-  .lens-feature { min-height: 560px; }
-  .lens-strip .lens-frame { min-height: 420px; }
+  .lens-slide {
+    flex-basis: clamp(240px, 42vw, 410px);
+    height: clamp(380px, 58vw, 620px);
+  }
   .hof-feature { min-height: 460px; }
   .hof-reel .hof-frame { min-height: 320px; }
+  .hof-extra { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .hof-extra .hof-frame { min-height: 340px; }
 }
 
 @media (max-width: 900px) {
@@ -2420,10 +2537,14 @@ body.cookies-open .whatsapp-float { bottom: 118px; }
   .hof-list,
   .clinic-points,
   .schedule-steps { grid-template-columns: 1fr; }
-  .lens-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .lens-strip .lens-frame { min-height: 360px; }
+  .lens-carousel-track { gap: .8rem; }
+  .lens-slide {
+    flex-basis: clamp(230px, 56vw, 360px);
+    height: clamp(360px, 82vw, 560px);
+  }
   .hof-reel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hof-reel .hof-frame { min-height: 300px; }
+  .hof-extra { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .case-card.large { grid-column: span 1; }
 }
 
@@ -2486,21 +2607,45 @@ body.cookies-open .whatsapp-float { bottom: 118px; }
   }
   .lens-cinema-head h3 { font-size: clamp(2.05rem, 10vw, 3.1rem); }
   .hof-cinema-head h3 { font-size: clamp(2.05rem, 10vw, 3.1rem); }
-  .lens-feature { min-height: 500px; }
+  .lens-carousel {
+    margin-inline: -1.05rem;
+    padding: .35rem 0 1.7rem;
+  }
+  .lens-carousel::before,
+  .lens-carousel::after {
+    bottom: 1.2rem;
+    width: 52px;
+  }
+  .lens-carousel-viewport {
+    padding: 1.45rem max(1.05rem, calc((100% - 300px) / 2)) 2.4rem;
+  }
+  .lens-carousel-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 1.7rem;
+  }
+  .lens-carousel-btn.prev { left: .55rem; }
+  .lens-carousel-btn.next { right: .55rem; }
+  .lens-slide {
+    flex-basis: clamp(220px, 74vw, 300px);
+    height: clamp(330px, 112vw, 460px);
+    transform: scale(.84);
+  }
+  .lens-slide.is-active { transform: scale(1); }
   .hof-feature {
     aspect-ratio: 1600 / 1146;
     min-height: 0;
   }
-  .lens-strip {
-    gap: .65rem;
-    grid-template-columns: 1fr 1fr;
-  }
-  .lens-strip .lens-frame { min-height: 300px; }
   .hof-reel {
     gap: .65rem;
     grid-template-columns: 1fr;
   }
   .hof-reel .hof-frame { min-height: 260px; }
+  .hof-extra {
+    gap: .65rem;
+    grid-template-columns: 1fr;
+  }
+  .hof-extra .hof-frame { min-height: 260px; }
   .lens-frame-caption {
     left: .75rem;
     right: .75rem;
@@ -2663,7 +2808,7 @@ body.cookies-open .whatsapp-float { bottom: 118px; }
       </div>
     </div>
 
-    <div class="lens-cinema" aria-label="Galeria de casos de lente em resina">
+    <div class="lens-cinema" id="lentes-galeria" aria-label="Galeria de casos de lente em resina">
       <div class="lens-cinema-head">
         <div>
           <div class="section-label"><span>Lentes em resina</span></div>
@@ -2671,51 +2816,59 @@ body.cookies-open .whatsapp-float { bottom: 118px; }
         </div>
         <p>Uma seleção de casos de lente em resina e facetas em resina composta, com foco em proporção, cor, acabamento e naturalidade para diferentes perfis de sorriso.</p>
       </div>
-      <div class="lens-gallery">
-        <figure class="lens-frame lens-feature">
-          <img src="assets/images/lenses/lente-resina-caso-01.jpeg" alt="Caso de lente em resina com sorriso natural" width="1066" height="1600" loading="lazy" decoding="async">
-          <figcaption class="lens-frame-caption">
-            <strong>Lente em resina</strong>
-            <span>Proporção e brilho natural</span>
-          </figcaption>
-        </figure>
-        <div class="lens-strip">
-          <figure class="lens-frame">
-            <img src="assets/images/lenses/lente-resina-caso-02.jpeg" alt="Resultado estético de lente em resina em sorriso jovem" width="1066" height="1600" loading="lazy" decoding="async">
-            <figcaption class="lens-frame-caption">
-              <strong>01</strong>
-              <span>Forma</span>
-            </figcaption>
-          </figure>
-          <figure class="lens-frame">
-            <img src="assets/images/lenses/lente-resina-caso-03.jpeg" alt="Sorriso masculino com facetas em resina composta" width="1066" height="1600" loading="lazy" decoding="async">
-            <figcaption class="lens-frame-caption">
-              <strong>02</strong>
-              <span>Textura</span>
-            </figcaption>
-          </figure>
-          <figure class="lens-frame">
-            <img src="assets/images/lenses/lente-resina-caso-04.jpeg" alt="Sorriso feminino com lente em resina" width="1066" height="1600" loading="lazy" decoding="async">
-            <figcaption class="lens-frame-caption">
-              <strong>03</strong>
-              <span>Leveza</span>
-            </figcaption>
-          </figure>
-          <figure class="lens-frame">
-            <img src="assets/images/lenses/lente-resina-caso-05.jpeg" alt="Resultado de estética dental com lentes em resina" width="1002" height="1600" loading="lazy" decoding="async">
-            <figcaption class="lens-frame-caption">
-              <strong>04</strong>
-              <span>Equilíbrio</span>
-            </figcaption>
-          </figure>
-          <figure class="lens-frame">
-            <img src="assets/images/lenses/lente-resina-caso-06.jpeg" alt="Caso de lente em resina com resultado natural" width="992" height="1600" loading="lazy" decoding="async">
-            <figcaption class="lens-frame-caption">
-              <strong>05</strong>
-              <span>Acabamento</span>
-            </figcaption>
-          </figure>
+      <div class="lens-gallery lens-carousel" data-lens-carousel>
+        <button class="lens-carousel-btn prev" type="button" aria-label="Imagem anterior de lentes" data-lens-prev>
+          <span aria-hidden="true">&lsaquo;</span>
+        </button>
+        <div class="lens-carousel-viewport" tabindex="0" aria-label="Arraste para ver mais casos de lente em resina">
+          <div class="lens-carousel-track">
+            <figure class="lens-frame lens-slide" data-lens-slide>
+              <img src="assets/images/lenses/lente-resina-caso-01.jpeg" alt="Caso de lente em resina com sorriso natural" width="1066" height="1600" loading="lazy" decoding="async">
+              <figcaption class="lens-frame-caption">
+                <strong>Lente em resina</strong>
+                <span>Proporção e brilho natural</span>
+              </figcaption>
+            </figure>
+            <figure class="lens-frame lens-slide" data-lens-slide>
+              <img src="assets/images/lenses/lente-resina-caso-02.jpeg" alt="Resultado estético de lente em resina em sorriso jovem" width="1066" height="1600" loading="lazy" decoding="async">
+              <figcaption class="lens-frame-caption">
+                <strong>01</strong>
+                <span>Forma</span>
+              </figcaption>
+            </figure>
+            <figure class="lens-frame lens-slide" data-lens-slide>
+              <img src="assets/images/lenses/lente-resina-caso-03.jpeg" alt="Sorriso masculino com facetas em resina composta" width="1066" height="1600" loading="lazy" decoding="async">
+              <figcaption class="lens-frame-caption">
+                <strong>02</strong>
+                <span>Textura</span>
+              </figcaption>
+            </figure>
+            <figure class="lens-frame lens-slide" data-lens-slide>
+              <img src="assets/images/lenses/lente-resina-caso-04.jpeg" alt="Sorriso feminino com lente em resina" width="1066" height="1600" loading="lazy" decoding="async">
+              <figcaption class="lens-frame-caption">
+                <strong>03</strong>
+                <span>Leveza</span>
+              </figcaption>
+            </figure>
+            <figure class="lens-frame lens-slide" data-lens-slide>
+              <img src="assets/images/lenses/lente-resina-caso-05.jpeg" alt="Resultado de estética dental com lentes em resina" width="1002" height="1600" loading="lazy" decoding="async">
+              <figcaption class="lens-frame-caption">
+                <strong>04</strong>
+                <span>Equilíbrio</span>
+              </figcaption>
+            </figure>
+            <figure class="lens-frame lens-slide" data-lens-slide>
+              <img src="assets/images/lenses/lente-resina-caso-06.jpeg" alt="Caso de lente em resina com resultado natural" width="992" height="1600" loading="lazy" decoding="async">
+              <figcaption class="lens-frame-caption">
+                <strong>05</strong>
+                <span>Acabamento</span>
+              </figcaption>
+            </figure>
+          </div>
         </div>
+        <button class="lens-carousel-btn next" type="button" aria-label="Proxima imagem de lentes" data-lens-next>
+          <span aria-hidden="true">&rsaquo;</span>
+        </button>
       </div>
       <p class="lens-cinema-note">As imagens mostram casos clínicos autorizados. Indicação, cor, formato e manutenção dependem da avaliação individual de cada paciente.</p>
     </div>
@@ -2976,6 +3129,29 @@ body.cookies-open .whatsapp-float { bottom: 118px; }
             <figcaption class="hof-frame-caption">
               <strong>04</strong>
               <span>Perfil</span>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="hof-extra" aria-label="Novos casos de harmonização orofacial">
+          <figure class="hof-frame">
+            <img src="assets/images/hof/hof-caso-06.jpeg" alt="Perfil facial em planejamento de harmonização orofacial" width="960" height="1280" loading="lazy" decoding="async">
+            <figcaption class="hof-frame-caption">
+              <strong>05</strong>
+              <span>Perfil facial</span>
+            </figcaption>
+          </figure>
+          <figure class="hof-frame">
+            <img src="assets/images/hof/hof-caso-07.jpeg" alt="Antes e depois frontal de harmonização orofacial com preenchimento facial" width="1280" height="1280" loading="lazy" decoding="async">
+            <figcaption class="hof-frame-caption">
+              <strong>06</strong>
+              <span>Volume e proporção</span>
+            </figcaption>
+          </figure>
+          <figure class="hof-frame">
+            <img src="assets/images/hof/hof-caso-08.jpeg" alt="Antes e depois de perfil em harmonização orofacial" width="1280" height="1280" loading="lazy" decoding="async">
+            <figcaption class="hof-frame-caption">
+              <strong>07</strong>
+              <span>Contorno facial</span>
             </figcaption>
           </figure>
         </div>
@@ -3396,6 +3572,241 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     target.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 });
+
+function setupLensCarousel() {
+  const carousel = document.querySelector("[data-lens-carousel]");
+  if (!carousel) return;
+
+  const viewport = carousel.querySelector(".lens-carousel-viewport");
+  const track = carousel.querySelector(".lens-carousel-track");
+  if (!viewport || !track) return;
+
+  const originalSlides = Array.from(track.querySelectorAll("[data-lens-slide]"));
+  const prevButton = carousel.querySelector("[data-lens-prev]");
+  const nextButton = carousel.querySelector("[data-lens-next]");
+
+  if (!prevButton || !nextButton || originalSlides.length < 2) return;
+
+  const cloneSlide = slide => {
+    const clone = slide.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    clone.dataset.lensClone = "true";
+    return clone;
+  };
+
+  const beforeClones = originalSlides.map(cloneSlide);
+  const afterClones = originalSlides.map(cloneSlide);
+  track.prepend(...beforeClones);
+  track.append(...afterClones);
+
+  let slides = Array.from(track.querySelectorAll(".lens-slide"));
+  const originalStart = beforeClones.length;
+  const originalLength = originalSlides.length;
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let activeFrame = 0;
+  let pauseTimer = 0;
+  let settleTimer = 0;
+  let paused = false;
+  let dragState = null;
+
+  const refreshSlides = () => {
+    slides = Array.from(track.querySelectorAll(".lens-slide"));
+  };
+
+  const nearestSlideIndex = () => {
+    const viewportRect = viewport.getBoundingClientRect();
+    const centerX = viewportRect.left + viewportRect.width / 2;
+    let closestIndex = originalStart;
+    let closestDistance = Infinity;
+
+    slides.forEach((slide, index) => {
+      const rect = slide.getBoundingClientRect();
+      const distance = Math.abs(rect.left + rect.width / 2 - centerX);
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    return closestIndex;
+  };
+
+  const originalIndexFromSlide = index => {
+    const normalized = (index - originalStart) % originalLength;
+    return (normalized + originalLength) % originalLength;
+  };
+
+  const updateActiveSlide = () => {
+    const activeIndex = nearestSlideIndex();
+    slides.forEach((slide, index) => {
+      slide.classList.toggle("is-active", index === activeIndex);
+    });
+  };
+
+  const requestCarouselFrame = () => {
+    if (activeFrame) return;
+    activeFrame = window.requestAnimationFrame(() => {
+      activeFrame = 0;
+      refreshSlides();
+      updateActiveSlide();
+    });
+  };
+
+  const slideScrollLeft = slide => slide.offsetLeft - (viewport.clientWidth - slide.offsetWidth) / 2;
+
+  const jumpToSlide = index => {
+    refreshSlides();
+    const slide = slides[index];
+    if (!slide) return;
+
+    const previousBehavior = viewport.style.scrollBehavior;
+    const previousSnap = viewport.style.scrollSnapType;
+    viewport.style.scrollBehavior = "auto";
+    viewport.style.scrollSnapType = "none";
+    viewport.scrollLeft = slideScrollLeft(slide);
+    updateActiveSlide();
+
+    window.requestAnimationFrame(() => {
+      viewport.style.scrollBehavior = previousBehavior;
+      viewport.style.scrollSnapType = previousSnap;
+    });
+  };
+
+  const snapCloneToOriginal = () => {
+    refreshSlides();
+    const activeIndex = nearestSlideIndex();
+    const firstOriginalIndex = originalStart;
+    const lastOriginalIndex = originalStart + originalLength - 1;
+
+    if (activeIndex >= firstOriginalIndex && activeIndex <= lastOriginalIndex) {
+      updateActiveSlide();
+      return;
+    }
+
+    jumpToSlide(originalStart + originalIndexFromSlide(activeIndex));
+  };
+
+  const scheduleCloneSnap = (delay = 180) => {
+    window.clearTimeout(settleTimer);
+    settleTimer = window.setTimeout(snapCloneToOriginal, delay);
+  };
+
+  const scrollToSlide = (index, behavior = "smooth") => {
+    refreshSlides();
+    const slide = slides[index];
+    if (!slide) return;
+    viewport.scrollTo({ left: slideScrollLeft(slide), behavior });
+  };
+
+  const pauseCarousel = (delay = 2800) => {
+    paused = true;
+    window.clearTimeout(pauseTimer);
+    pauseTimer = window.setTimeout(() => {
+      paused = false;
+    }, delay);
+  };
+
+  const moveCarousel = (direction, userInitiated = true) => {
+    scrollToSlide(nearestSlideIndex() + direction);
+    scheduleCloneSnap(720);
+    if (userInitiated) pauseCarousel(3400);
+  };
+
+  prevButton.addEventListener("click", () => moveCarousel(-1));
+  nextButton.addEventListener("click", () => moveCarousel(1));
+
+  viewport.addEventListener("scroll", () => {
+    requestCarouselFrame();
+    if (!dragState) scheduleCloneSnap();
+  }, { passive: true });
+  viewport.addEventListener("wheel", () => {
+    pauseCarousel(2400);
+    scheduleCloneSnap(260);
+  }, { passive: true });
+  carousel.addEventListener("mouseenter", () => {
+    paused = true;
+    window.clearTimeout(pauseTimer);
+  });
+  carousel.addEventListener("mouseleave", () => pauseCarousel(900));
+
+  viewport.addEventListener("keydown", event => {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      moveCarousel(-1);
+    }
+
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      moveCarousel(1);
+    }
+  });
+
+  viewport.addEventListener("pointerdown", event => {
+    if (event.button !== 0) return;
+    dragState = {
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startY: event.clientY,
+      scrollLeft: viewport.scrollLeft,
+      horizontal: false
+    };
+    if (viewport.setPointerCapture) {
+      viewport.setPointerCapture(event.pointerId);
+    }
+    viewport.classList.add("is-dragging");
+    pauseCarousel(7000);
+  });
+
+  viewport.addEventListener("pointermove", event => {
+    if (!dragState || dragState.pointerId !== event.pointerId) return;
+
+    const deltaX = event.clientX - dragState.startX;
+    const deltaY = event.clientY - dragState.startY;
+
+    if (!dragState.horizontal && Math.abs(deltaX) > 6 && Math.abs(deltaX) > Math.abs(deltaY)) {
+      dragState.horizontal = true;
+    }
+
+    if (!dragState.horizontal) return;
+
+    viewport.scrollLeft = dragState.scrollLeft - deltaX;
+    event.preventDefault();
+  });
+
+  const finishDrag = event => {
+    if (!dragState || dragState.pointerId !== event.pointerId) return;
+    if (viewport.releasePointerCapture) {
+      viewport.releasePointerCapture(event.pointerId);
+    }
+    viewport.classList.remove("is-dragging");
+    dragState = null;
+    pauseCarousel(1800);
+    requestCarouselFrame();
+    scheduleCloneSnap(180);
+  };
+
+  viewport.addEventListener("pointerup", finishDrag);
+  viewport.addEventListener("pointercancel", finishDrag);
+
+  const initializeCarousel = () => {
+    refreshSlides();
+    jumpToSlide(originalStart);
+  };
+
+  window.requestAnimationFrame(initializeCarousel);
+  window.addEventListener("resize", () => {
+    snapCloneToOriginal();
+  });
+
+  if (!reducedMotion) {
+    window.setInterval(() => {
+      if (paused || document.visibilityState !== "visible") return;
+      moveCarousel(1, false);
+    }, 3800);
+  }
+}
+
+setupLensCarousel();
 
 document.addEventListener("click", event => {
   const link = event.target.closest("a");
