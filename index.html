@@ -2319,6 +2319,94 @@ footer a {
 
 footer a:hover { color: var(--gold); }
 
+.footer-meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: .85rem 1rem;
+  max-width: 980px;
+}
+
+.footer-meta p {
+  margin: 0;
+}
+
+.footer-keywords {
+  position: relative;
+}
+
+.footer-keywords-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: .55rem .8rem;
+  border: 1px solid var(--gold-border);
+  border-radius: 999px;
+  background: rgba(201, 166, 85, .06);
+  color: var(--gold);
+  font-size: .64rem;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+  line-height: 1;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .25s ease, border-color .25s ease, color .25s ease;
+}
+
+.footer-keywords-toggle:hover,
+.footer-keywords-toggle[aria-expanded="true"] {
+  border-color: rgba(201, 166, 85, .55);
+  background: rgba(201, 166, 85, .14);
+  color: var(--white);
+}
+
+.footer-keyword-bubble {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + .85rem);
+  z-index: 20;
+  width: min(560px, calc(100vw - 2rem));
+  padding: 1rem;
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-sm);
+  background: rgba(12, 12, 12, .96);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .45);
+  backdrop-filter: blur(14px);
+}
+
+.footer-keyword-bubble[hidden] {
+  display: none;
+}
+
+.footer-keyword-bubble::after {
+  content: "";
+  position: absolute;
+  right: 1.2rem;
+  bottom: -7px;
+  width: 12px;
+  height: 12px;
+  border-right: 1px solid var(--gold-border);
+  border-bottom: 1px solid var(--gold-border);
+  background: rgba(12, 12, 12, .96);
+  transform: rotate(45deg);
+}
+
+.footer-keyword-title {
+  display: block;
+  color: var(--gold);
+  font-size: .62rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.footer-search-terms {
+  margin-top: .85rem;
+}
+
 .toast {
   position: fixed;
   left: 50%;
@@ -2492,6 +2580,8 @@ body.cookies-open .whatsapp-float { bottom: 118px; }
   .focus-grid { grid-template-columns: 1fr; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .search-topic-list { grid-template-columns: 1fr; }
+  footer { align-items: flex-start; }
+  .footer-meta { justify-content: flex-start; }
   .cases-grid { grid-template-columns: repeat(2, 1fr); }
   .lens-slide {
     flex-basis: clamp(240px, 42vw, 410px);
@@ -2696,6 +2786,15 @@ body.cookies-open .whatsapp-float { bottom: 118px; }
   body.cookies-open.footer-in-view .whatsapp-float,
   body.cookies-open .whatsapp-float {
     bottom: calc(178px + env(safe-area-inset-bottom));
+  }
+  .footer-keyword-bubble {
+    right: auto;
+    left: 0;
+    width: min(340px, calc(100vw - 2rem));
+  }
+  .footer-keyword-bubble::after {
+    right: auto;
+    left: 1.1rem;
   }
   .toast { width: calc(100% - 40px); text-align: center; white-space: normal; }
 }
@@ -2962,16 +3061,6 @@ body.cookies-open .whatsapp-float { bottom: 118px; }
         <div class="section-label"><span>Dentista em Varginha-MG</span></div>
         <h2 class="section-title">Lente em resina, facetas e estética dental com avaliação individual.</h2>
         <p class="section-sub">Se você procura dentista em Varginha para lente em resina, faceta de resina composta, clareamento dental, restaurações estéticas ou transformação do sorriso, a avaliação com a Dra. Jessica Daniela ajuda a entender qual procedimento é indicado para o seu caso.</p>
-        <ul class="search-terms" aria-label="Tratamentos e buscas relacionadas à Clínica Dra Jessica Daniela">
-          <li>Dentista em Varginha</li>
-          <li>Lente em resina Varginha</li>
-          <li>Faceta em resina composta</li>
-          <li>Facetas em porcelana</li>
-          <li>Odontologia estética</li>
-          <li>Clareamento dental</li>
-          <li>Alinhadores invisíveis</li>
-          <li>Harmonização orofacial</li>
-        </ul>
       </div>
       <div class="search-topic-list">
         <article class="search-topic">
@@ -3440,9 +3529,27 @@ body.cookies-open .whatsapp-float { bottom: 118px; }
   </section>
 </main>
 
-<footer>
+<footer id="rodape">
   <span class="footer-brand">Clínica Dra Jessica Daniela</span>
-  <p>DRA JESSICA DANIELA ODONTOLOGIA ESTETICA LTDA | CNPJ 45.866.158/0001-87 | CRO-MG 072357 | <a href="https://www.instagram.com/drajessicadaniela/" target="_blank" rel="noopener noreferrer">Instagram</a> | <a href="https://www.instagram.com/drajessicadanielaodontologia/" target="_blank" rel="noopener noreferrer">Perfil da clínica</a> | <a href="https://maps.app.goo.gl/7gWagz1Vwiaia56v7" target="_blank" rel="noopener noreferrer">Localização</a> | <a href="politica-privacidade.html">Política de Privacidade</a></p>
+  <div class="footer-meta">
+    <p>DRA JESSICA DANIELA ODONTOLOGIA ESTETICA LTDA | CNPJ 45.866.158/0001-87 | CRO-MG 072357 | <a href="https://www.instagram.com/drajessicadaniela/" target="_blank" rel="noopener noreferrer">Instagram</a> | <a href="https://www.instagram.com/drajessicadanielaodontologia/" target="_blank" rel="noopener noreferrer">Perfil da clínica</a> | <a href="https://maps.app.goo.gl/7gWagz1Vwiaia56v7" target="_blank" rel="noopener noreferrer">Localização</a> | <a href="politica-privacidade.html">Política de Privacidade</a></p>
+    <div class="footer-keywords">
+      <button class="footer-keywords-toggle" type="button" id="footerKeywordToggle" aria-expanded="false" aria-controls="footerKeywordBubble">Buscas relacionadas</button>
+      <div class="footer-keyword-bubble" id="footerKeywordBubble" hidden>
+        <span class="footer-keyword-title">Tratamentos e buscas</span>
+        <ul class="search-terms footer-search-terms" aria-label="Tratamentos e buscas relacionadas à Clínica Dra Jessica Daniela">
+          <li>Dentista em Varginha</li>
+          <li>Lente em resina Varginha</li>
+          <li>Faceta em resina composta</li>
+          <li>Facetas em porcelana</li>
+          <li>Odontologia estética</li>
+          <li>Clareamento dental</li>
+          <li>Alinhadores invisíveis</li>
+          <li>Harmonização orofacial</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Preferências de cookies">
@@ -3466,6 +3573,8 @@ const navLinks = document.getElementById("navLinks");
 const cookieBanner = document.getElementById("cookieBanner");
 const acceptCookiesButton = document.getElementById("acceptCookies");
 const declineCookiesButton = document.getElementById("declineCookies");
+const footerKeywordToggle = document.getElementById("footerKeywordToggle");
+const footerKeywordBubble = document.getElementById("footerKeywordBubble");
 let currentCookieConsent = null;
 
 function loadGTM() {
@@ -3561,6 +3670,27 @@ if (footer && "IntersectionObserver" in window) {
   }, { threshold: 0.08 });
 
   footerObserver.observe(footer);
+}
+
+function closeFooterKeywords() {
+  if (!footerKeywordToggle || !footerKeywordBubble) return;
+  footerKeywordBubble.hidden = true;
+  footerKeywordToggle.setAttribute("aria-expanded", "false");
+}
+
+if (footerKeywordToggle && footerKeywordBubble) {
+  footerKeywordToggle.addEventListener("click", event => {
+    event.stopPropagation();
+    const shouldOpen = footerKeywordBubble.hidden;
+    footerKeywordBubble.hidden = !shouldOpen;
+    footerKeywordToggle.setAttribute("aria-expanded", String(shouldOpen));
+  });
+
+  footerKeywordBubble.addEventListener("click", event => event.stopPropagation());
+  document.addEventListener("click", closeFooterKeywords);
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") closeFooterKeywords();
+  });
 }
 
 menuToggle.addEventListener("click", () => {
