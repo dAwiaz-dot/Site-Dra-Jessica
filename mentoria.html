@@ -338,6 +338,35 @@ section { padding: clamp(3rem, 6vw, 5.5rem) 6vw; }
   line-height: 1.5;
 }
 
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+
+.case-card {
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--black2);
+}
+
+.case-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+.case-card span {
+  display: block;
+  padding: .8rem 1rem;
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 300;
+  letter-spacing: .3px;
+}
+
 .pricing-wrap {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(280px, .78fr);
@@ -446,13 +475,14 @@ footer a:hover { color: var(--gold); }
   .hero-photo { order: -1; max-width: 300px; margin: 0 auto; }
   .author-panel { grid-template-columns: 1fr; text-align: center; }
   .author-panel img { max-width: 200px; margin: 0 auto; }
-  .stat-grid, .offer-grid, .step-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat-grid, .offer-grid, .step-grid, .case-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .dominate-list { grid-template-columns: 1fr; }
   .pricing-wrap { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 560px) {
   .stat-grid, .offer-grid, .step-grid { grid-template-columns: 1fr; }
+  .case-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; }
   nav { padding: .9rem 5vw; }
 }
 </style>
@@ -530,6 +560,26 @@ footer a:hover { color: var(--gold); }
       <div class="step-card"><span class="step-num">02</span><h4>Cor e Anatomia</h4><p>Seleção de resinas, proporções e referências anatômicas por caso.</p></div>
       <div class="step-card"><span class="step-num">03</span><h4>Execução</h4><p>Estratificação em camadas: palatina, dentina, mamelões, esmalte.</p></div>
       <div class="step-card"><span class="step-num">04</span><h4>Acabamento</h4><p>Polimento, brilho natural e precificação por resultado.</p></div>
+    </div>
+  </section>
+
+  <section id="resultados">
+    <div class="eyebrow"><span>Resultados reais</span></div>
+    <h2 class="section-title">Casos aplicados com o método, em sessão única.</h2>
+    <p class="section-sub">Alguns registros de antes e depois de pacientes atendidos com o protocolo de facetas em resina na hora.</p>
+    <div class="case-grid">
+      <div class="case-card">
+        <img src="assets/images/cases/mentoria-caso-antes-depois-01.jpg" alt="Caso de facetas em resina, antes e depois — dente fraturado" loading="lazy">
+      </div>
+      <div class="case-card">
+        <img src="assets/images/cases/mentoria-caso-antes-depois-02.jpg" alt="Caso de facetas em resina, antes e depois" loading="lazy">
+      </div>
+      <div class="case-card">
+        <img src="assets/images/cases/mentoria-caso-mockup-01.jpg" alt="Planejamento com mock-up, antes e depois" loading="lazy">
+      </div>
+      <div class="case-card">
+        <img src="assets/images/cases/mentoria-caso-grid-01.jpg" alt="Comparativo de casos de facetas em resina" loading="lazy">
+      </div>
     </div>
   </section>
 
