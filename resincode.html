@@ -6,17 +6,17 @@
 <meta name="theme-color" content="#080808">
 <meta name="color-scheme" content="dark">
 <meta name="robots" content="index, follow">
-<meta name="description" content="Consultoria na Clínica com a Dra. Jéssica Daniela: leve o método de Facetas em Resina na Hora para dentro do seu consultório, com caso clínico real e suporte de 6 meses.">
+<meta name="description" content="Método Resin Code, da Dra. Jéssica Daniela: o e-book completo sobre facetas em resina composta de alto valor — do planejamento à execução, com ciência, técnica e excelência.">
 <meta name="author" content="Clínica Dra Jessica Daniela">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Clínica Dra Jessica Daniela">
-<meta property="og:title" content="Consultoria na Clínica | Facetas em Resina na Hora | Dra Jessica">
-<meta property="og:description" content="Método completo de facetas em resina em sessão única, aplicado dentro da sua clínica com a Dra. Jéssica Daniela. Vagas limitadas.">
+<meta property="og:title" content="Método Resin Code | O código das facetas em resina de alto valor">
+<meta property="og:description" content="O sistema definitivo para facetas em resina composta de alta performance. Do planejamento à entrega do sorriso — com ciência, técnica e excelência em cada etapa.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://drajessicadaniela.com.br/mentoria.html">
+<meta property="og:url" content="https://drajessicadaniela.com.br/resincode.html">
 <meta property="og:image" content="https://drajessicadaniela.com.br/assets/images/og-image.png">
-<title>Consultoria na Clínica | Facetas em Resina na Hora | Dra Jessica</title>
-<link rel="canonical" href="https://drajessicadaniela.com.br/mentoria.html">
+<title>Método Resin Code | O código das facetas em resina de alto valor</title>
+<link rel="canonical" href="https://drajessicadaniela.com.br/resincode.html">
 <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
@@ -201,7 +201,9 @@ main { padding-top: 84px; max-width: 1200px; margin: 0 auto; }
   margin-bottom: 2.2rem;
 }
 
-.hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+
+.hero-note { width: 100%; color: var(--muted2); font-size: .8rem; font-weight: 300; margin-top: .4rem; }
 
 .hero-photo {
   position: relative;
@@ -228,6 +230,20 @@ main { padding-top: 84px; max-width: 1200px; margin: 0 auto; }
   inset: 0;
   background: linear-gradient(to top, rgba(0, 0, 0, .38), transparent 44%), linear-gradient(135deg, rgba(201, 166, 85, .16), transparent 46%);
   pointer-events: none;
+}
+
+.hero-badge {
+  position: absolute;
+  left: -1px;
+  bottom: 20px;
+  background: var(--black);
+  border: 1px solid var(--gold-border);
+  border-left: none;
+  padding: .7rem 1.1rem;
+  font-size: .68rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
 }
 
 section { padding: clamp(3rem, 6vw, 5.5rem) 6vw; }
@@ -269,22 +285,23 @@ section { padding: clamp(3rem, 6vw, 5.5rem) 6vw; }
 }
 
 .author-panel h3 { font-size: 1.5rem; margin: 0 0 .8rem; }
-.author-panel p { color: var(--muted); font-size: .94rem; font-weight: 300; margin: 0; }
+.author-panel p { color: var(--muted); font-size: .94rem; font-weight: 300; margin: 0 0 .9rem; }
+.author-panel p:last-child { margin-bottom: 0; }
 
-.stat-grid, .step-grid, .offer-grid {
+.stat-grid, .step-grid, .offer-grid, .chapter-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1.1rem;
 }
 
-.stat-card, .step-card {
+.stat-card, .step-card, .chapter-card {
   background: var(--black2);
   border: 1px solid var(--gold-border);
   border-radius: var(--radius);
   padding: 1.8rem 1.5rem;
 }
 
-.stat-card strong, .step-card .step-num {
+.stat-card strong, .step-card .step-num, .chapter-card .step-num {
   display: block;
   color: var(--gold);
   font-family: "Cormorant Garamond", serif;
@@ -294,8 +311,10 @@ section { padding: clamp(3rem, 6vw, 5.5rem) 6vw; }
 
 .stat-card span { color: var(--muted); font-size: .86rem; font-weight: 300; line-height: 1.6; }
 
-.step-card h4 { margin: 0 0 .5rem; font-size: 1.1rem; font-weight: 500; font-family: "Jost", sans-serif; color: var(--white); }
-.step-card p { margin: 0; color: var(--muted); font-size: .85rem; font-weight: 300; line-height: 1.6; }
+.step-card h4, .chapter-card h4 { margin: 0 0 .5rem; font-size: 1.1rem; font-weight: 500; font-family: "Jost", sans-serif; color: var(--white); }
+.step-card p, .chapter-card p { margin: 0; color: var(--muted); font-size: .85rem; font-weight: 300; line-height: 1.6; }
+
+.chapter-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
 .offer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .offer-card { background: var(--black2); border: 1px solid var(--gold-border); border-radius: var(--radius); padding: 2rem 1.7rem; }
@@ -338,33 +357,36 @@ section { padding: clamp(3rem, 6vw, 5.5rem) 6vw; }
   line-height: 1.5;
 }
 
-.case-grid {
+.citation-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.4rem;
 }
 
-.case-card {
+.citation-card {
+  background: var(--black2);
   border: 1px solid var(--gold-border);
   border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--black2);
+  padding: 1.8rem 1.7rem;
 }
 
-.case-card img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
+.citation-card cite {
   display: block;
-}
-
-.case-card span {
-  display: block;
-  padding: .8rem 1rem;
-  color: var(--muted);
+  font-style: normal;
   font-size: .78rem;
-  font-weight: 300;
   letter-spacing: .3px;
+  color: var(--gold);
+  margin-bottom: .9rem;
+  line-height: 1.5;
+}
+
+.citation-card p {
+  margin: 0;
+  color: var(--soft);
+  font-size: .92rem;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.7;
 }
 
 .pricing-wrap {
@@ -475,21 +497,20 @@ footer a:hover { color: var(--gold); }
   .hero-photo { order: -1; max-width: 300px; margin: 0 auto; }
   .author-panel { grid-template-columns: 1fr; text-align: center; }
   .author-panel img { max-width: 200px; margin: 0 auto; }
-  .stat-grid, .offer-grid, .step-grid, .case-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat-grid, .offer-grid, .step-grid, .chapter-grid, .citation-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .dominate-list { grid-template-columns: 1fr; }
   .pricing-wrap { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 560px) {
-  .stat-grid, .offer-grid, .step-grid { grid-template-columns: 1fr; }
-  .case-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; }
+  .stat-grid, .offer-grid, .step-grid, .chapter-grid, .citation-grid { grid-template-columns: 1fr; }
   nav { padding: .9rem 5vw; }
 }
 </style>
 </head>
 <body>
 
-<a class="whatsapp-float" href="https://wa.me/5535991465670?text=Ol%C3%A1%2C%20Dra.%20Jessica!%20Tenho%20interesse%20na%20Consultoria%20na%20Cl%C3%ADnica%20sobre%20facetas%20em%20resina." target="_blank" rel="noopener noreferrer" aria-label="Falar com a Dra. Jessica pelo WhatsApp">
+<a class="whatsapp-float" href="https://wa.me/5535991465670?text=Ol%C3%A1%2C%20Dra.%20Jessica!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20e-book%20Resin%20Code." target="_blank" rel="noopener noreferrer" aria-label="Falar com a Dra. Jessica pelo WhatsApp">
   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" viewBox="0 0 24 24" aria-hidden="true">
     <path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.16 1.6 5.97L0 24l6.22-1.57A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.22-3.48-8.52zM12 22a9.93 9.93 0 0 1-5.06-1.38l-.36-.21-3.69.93.99-3.59-.24-.37A9.94 9.94 0 0 1 2 12c0-5.51 4.49-10 10-10s10 4.49 10 10-4.49 10-10 10zm5.47-7.42c-.3-.15-1.77-.87-2.04-.97s-.47-.15-.67.15-.77.97-.95 1.17-.35.22-.65.07a8.16 8.16 0 0 1-2.4-1.48 9 9 0 0 1-1.66-2.07c-.17-.3 0-.46.13-.61.12-.13.3-.35.45-.52s.2-.3.3-.5.05-.37-.02-.52-.67-1.61-.92-2.2c-.24-.58-.49-.5-.67-.51H6.53c-.2 0-.52.07-.79.37S4.9 8.6 4.9 9.7s.77 2.17.88 2.32c.1.15 1.52 2.32 3.68 3.25.51.22.91.35 1.22.45.51.16.98.14 1.35.08.41-.06 1.27-.52 1.45-1.02s.18-.93.13-1.02c-.05-.1-.2-.15-.5-.3z"/>
   </svg>
@@ -499,26 +520,28 @@ footer a:hover { color: var(--gold); }
   <a class="brand" href="index.html" aria-label="Dra. Jessica Daniela">
     <span class="brand-mark"><img src="assets/branding/logo-jd-preto.png" alt=""></span>
     <span class="brand-text">
-      <small>Dra.</small>
-      <strong>Jessica Daniela</strong>
+      <small>Método</small>
+      <strong>Resin Code</strong>
     </span>
   </a>
-  <a class="nav-cta" href="index.html">Ver site</a>
+  <a class="nav-cta" href="#investimento">Quero o e-book</a>
 </nav>
 
 <main>
   <section class="hero" id="inicio">
     <div>
-      <div class="eyebrow"><span>Para dentistas · Consultoria presencial</span></div>
-      <h1>Facetas em Resina na Hora — leve o método para dentro do seu <em>consultório.</em></h1>
-      <p class="hero-copy">Planejamento, execução, acabamento e precificação de facetas em resina em sessão única — com a Dra. Jéssica Daniela dentro da sua clínica, num caso clínico real, do início ao fim.</p>
+      <div class="eyebrow"><span>Para dentistas · E-book digital</span></div>
+      <h1>O código das facetas em resina de <em>alto valor.</em></h1>
+      <p class="hero-copy">O sistema definitivo para facetas em resina composta de alta performance. Do planejamento à entrega do sorriso — com ciência, técnica e excelência em cada etapa. Um guia completo para dominar ou elevar sua prática em facetas diretas.</p>
       <div class="hero-actions">
-        <a class="btn-gold" href="https://wa.me/5535991465670?text=Ol%C3%A1%2C%20Dra.%20Jessica!%20Quero%20garantir%20minha%20vaga%20na%20Consultoria%20na%20Cl%C3%ADnica." target="_blank" rel="noopener noreferrer">Quero garantir minha vaga</a>
-        <a class="btn-outline" href="#metodo">Conhecer o método</a>
+        <a class="btn-gold" href="https://pay.kirvano.com/90e6e30b-21cb-486b-b814-f0e7dff38fdc" target="_blank" rel="noopener noreferrer">Quero o Resin Code</a>
+        <a class="btn-outline" href="#sumario">Ver o que tem dentro</a>
+        <span class="hero-note">Acesso imediato após a confirmação do pagamento.</span>
       </div>
     </div>
     <div class="hero-photo">
-      <img src="assets/images/portraits/dra-jessica-atendimento-premium.jpg" alt="Dra. Jessica Daniela, especialista em facetas em resina" loading="eager">
+      <img src="assets/images/portraits/dra-jessica-hero.jpeg" alt="Dra. Jessica Daniela, especialista em facetas em resina" loading="eager">
+      <div class="hero-badge">Planejamento · Execução · Excelência</div>
     </div>
   </section>
 
@@ -526,147 +549,142 @@ footer a:hover { color: var(--gold); }
 
   <section id="para-quem">
     <div class="eyebrow"><span>Para quem é</span></div>
-    <h2 class="section-title">Dentistas que querem autonomia técnica e mais valor por sessão.</h2>
-    <p class="section-sub">Clínicos gerais e especialistas em dentística que querem parar de depender de laboratórios de porcelana, reduzir o tempo de cadeira e aumentar o ticket médio dos atendimentos estéticos — sem esperar semanas por um resultado.</p>
+    <h2 class="section-title">Um método prático e previsível, direto da cadeira clínica.</h2>
+    <p class="section-sub">Cirurgiões-dentistas que querem parar de copiar técnicas soltas e passar a entender a lógica por trás de cada decisão clínica — do planejamento à estratificação, do acabamento ao polimento — com previsibilidade de resultado.</p>
 
     <div class="author-panel">
       <img src="assets/images/portraits/dra-jessica-daniela.jpg" alt="Dra. Jessica Daniela">
       <div>
         <div class="eyebrow"><span>A autora</span></div>
         <h3>Dra. Jéssica Daniela</h3>
-        <p>Dentista especialista em facetas em resina, reconhecida pelos resultados naturais e por transformar sorrisos na hora, em uma única sessão de atendimento. O método nasceu de milhares de horas de clínica, condensadas num roteiro claro, objetivo e imediatamente aplicável na rotina clínica.</p>
+        <p>Cirurgiã-dentista formada pela Universidade Federal de Alfenas (UNIFAL) desde 2014, com especialização em Ortodontia pela FUNORTE e em Harmonização Orofacial. Ao longo dos anos, investiu em cursos com grandes referências nacionais em facetas em resina e porcelana, desenvolvendo um método próprio que une estética, naturalidade e excelência nos resultados.</p>
+        <p>O Resin Code nasceu da sua experiência clínica diária, condensada num roteiro claro, objetivo e imediatamente aplicável na rotina do consultório.</p>
       </div>
     </div>
   </section>
 
-  <section id="porque">
-    <div class="eyebrow"><span>Por que facetas em resina</span></div>
-    <h2 class="section-title">A porta de entrada para uma odontologia de alto valor.</h2>
-    <p class="section-sub">Menor custo para o paciente, execução em sessão única, reversibilidade e mínimo desgaste dentário — vantagens que se traduzem em satisfação clínica, indicação espontânea e faturamento previsível.</p>
-    <div class="stat-grid">
-      <div class="stat-card"><strong>Sessão Única</strong><span>O paciente entra com um sorriso e sai com outro no mesmo dia. Sem espera, sem laboratório.</span></div>
-      <div class="stat-card"><strong>Menor Desgaste</strong><span>Preservação máxima da estrutura dentária saudável, com técnica minimamente invasiva.</span></div>
-      <div class="stat-card"><strong>Alto Ticket Médio</strong><span>Procedimentos estéticos diretos, posicionados corretamente, geram faturamento robusto.</span></div>
-      <div class="stat-card"><strong>Porta de Entrada</strong><span>Pacientes satisfeitos evoluem naturalmente para tratamentos de maior valor agregado.</span></div>
+  <section id="aprender">
+    <div class="eyebrow"><span>O que você vai dominar</span></div>
+    <h2 class="section-title">Não apenas o que fazer — mas por que fazer cada etapa.</h2>
+    <p class="section-sub">Ao final da leitura, você deixa de apenas copiar técnicas e passa a enxergar, planejar e reproduzir a natureza com precisão.</p>
+    <ul class="dominate-list">
+      <li>Escolher a resina ideal para cada camada da restauração</li>
+      <li>Entender a função das resinas de dentina, esmalte e efeitos</li>
+      <li>Construir anatomias naturais e harmoniosas</li>
+      <li>Reproduzir cor, translucidez, opacidade e profundidade com previsibilidade</li>
+      <li>Evitar os erros mais comuns que comprometem a estética final</li>
+      <li>Desenvolver um protocolo clínico organizado e eficiente</li>
+      <li>Criar facetas que realmente se assemelham a dentes naturais</li>
+      <li>Trabalhar com mais confiança, agilidade e qualidade em cada caso</li>
+    </ul>
+  </section>
+
+  <section id="sumario">
+    <div class="eyebrow"><span>Sumário do protocolo</span></div>
+    <h2 class="section-title">12 capítulos, do consultório à cadeira operatória.</h2>
+    <p class="section-sub">O Protocolo Resin Code está estruturado em capítulos que cobrem integralmente o ciclo clínico das facetas em resina composta — da base científica até o posicionamento de mercado.</p>
+    <div class="chapter-grid">
+      <div class="chapter-card"><span class="step-num">01</span><h4>Workflow clínico</h4><p>Avaliação, seleção de cor (escala Blech), termos, fotografia, retorno e manutenção.</p></div>
+      <div class="chapter-card"><span class="step-num">02</span><h4>Protocolo clínico</h4><p>Isolamento, fio retrator, decisão de desgaste, sistema adesivo, resinas, acabamento e polimento.</p></div>
+      <div class="chapter-card"><span class="step-num">03</span><h4>Anatomia dental</h4><p>Estruturas anatômicas e anexas aplicadas à confecção das facetas.</p></div>
+      <div class="chapter-card"><span class="step-num">04</span><h4>Materiais utilizados</h4><p>Instrumentais, resinas, sistema adesivo, isolamento, acabamento e polimento — lista completa.</p></div>
+      <div class="chapter-card"><span class="step-num">05</span><h4>Técnica estratificada</h4><p>Concha palatina, opacificador, primeira e segunda camada, ajuste de oclusão.</p></div>
+      <div class="chapter-card"><span class="step-num">06</span><h4>Acabamento das facetas</h4><p>Áreas de espelho, áreas de sombra e delimitação dos planos vestibulares.</p></div>
+      <div class="chapter-card"><span class="step-num">07</span><h4>Polimento</h4><p>Espirais de polimento, anatomia secundária e texturização com efeito Flor de Lótus.</p></div>
+      <div class="chapter-card"><span class="step-num">08</span><h4>Finalização com disco de feltro</h4><p>O passo final que garante brilho intenso e duradouro à restauração.</p></div>
+      <div class="chapter-card"><span class="step-num">09</span><h4>Considerações finais</h4><p>Escolha da cor, longevidade, manutenção, sensibilidade pós-operatória e oclusão.</p></div>
+      <div class="chapter-card"><span class="step-num">10</span><h4>Fotografia odontológica</h4><p>Profundidade de campo, flash, configurações de câmera e documentação clínica.</p></div>
+      <div class="chapter-card"><span class="step-num">11</span><h4>Quem sou eu &amp; objetivo</h4><p>A trajetória da Dra. Jéssica e o propósito por trás do método.</p></div>
+      <div class="chapter-card"><span class="step-num">12</span><h4>Dicas clínicas Resin Code</h4><p>Recomendações práticas espalhadas por todo o protocolo, direto da experiência da autora.</p></div>
     </div>
   </section>
 
-  <section id="metodo">
-    <div class="eyebrow"><span>O método</span></div>
-    <h2 class="section-title">4 etapas sequenciais, dentro da mesma sessão clínica.</h2>
-    <p class="section-sub">Cada etapa tem critérios claros de entrada e saída — o que garante previsibilidade de resultado e reduz drasticamente o retrabalho.</p>
-    <div class="step-grid">
-      <div class="step-card"><span class="step-num">01</span><h4>Diagnóstico</h4><p>Seleção de caso, anamnese estética e fotografia clínica padronizada.</p></div>
-      <div class="step-card"><span class="step-num">02</span><h4>Cor e Anatomia</h4><p>Seleção de resinas, proporções e referências anatômicas por caso.</p></div>
-      <div class="step-card"><span class="step-num">03</span><h4>Execução</h4><p>Estratificação em camadas: palatina, dentina, mamelões, esmalte.</p></div>
-      <div class="step-card"><span class="step-num">04</span><h4>Acabamento</h4><p>Polimento, brilho natural e precificação por resultado.</p></div>
-    </div>
-  </section>
-
-  <section id="resultados">
-    <div class="eyebrow"><span>Resultados reais</span></div>
-    <h2 class="section-title">Casos aplicados com o método, em sessão única.</h2>
-    <p class="section-sub">Alguns registros de antes e depois de pacientes atendidos com o protocolo de facetas em resina na hora.</p>
-    <div class="case-grid">
-      <div class="case-card">
-        <img src="assets/images/cases/mentoria-caso-antes-depois-01.jpg" alt="Caso de facetas em resina, antes e depois — dente fraturado" loading="lazy">
+  <section id="ciencia">
+    <div class="eyebrow"><span>Base científica</span></div>
+    <h2 class="section-title">Facetas em resina duram — e a literatura confirma.</h2>
+    <p class="section-sub">As facetas em resina composta direta são uma das opções mais conservadoras e rentáveis da odontologia estética atual. O Resin Code é construído sobre ciência, não apenas experiência.</p>
+    <div class="citation-grid">
+      <div class="citation-card">
+        <cite>BRITO, J. A. O. et al. Indicações e longevidade das facetas de resina composta. Research, Society and Development, 2022.</cite>
+        <p>"As facetas diretas de resina composta apresentam boa previsibilidade clínica quando corretamente indicadas e executadas, sendo que sua durabilidade está relacionada à qualidade do material utilizado, à técnica operatória e aos hábitos do paciente."</p>
       </div>
-      <div class="case-card">
-        <img src="assets/images/cases/mentoria-caso-antes-depois-02.jpg" alt="Caso de facetas em resina, antes e depois" loading="lazy">
-      </div>
-      <div class="case-card">
-        <img src="assets/images/cases/mentoria-caso-mockup-01.jpg" alt="Planejamento com mock-up, antes e depois" loading="lazy">
-      </div>
-      <div class="case-card">
-        <img src="assets/images/cases/mentoria-caso-grid-01.jpg" alt="Comparativo de casos de facetas em resina" loading="lazy">
+      <div class="citation-card">
+        <cite>ZIMMER, R. et al. Clinical longevity of direct resin-based composite veneers on anterior teeth. Revista da Faculdade de Odontologia, 2024.</cite>
+        <p>"Estudos clínicos sobre facetas diretas em resina composta evidenciam taxas de sobrevivência superiores a 90% nos primeiros anos de acompanhamento."</p>
       </div>
     </div>
   </section>
 
-  <section id="consultoria">
-    <div class="eyebrow"><span>A oferta</span></div>
-    <h2 class="section-title">Consultoria na Clínica</h2>
-    <p class="section-sub">Leve este método para dentro do seu consultório — com suporte completo, caso real e orientação personalizada.</p>
+  <section id="oferta">
+    <div class="eyebrow"><span>O que está incluso</span></div>
+    <h2 class="section-title">Muito mais do que um e-book de técnica.</h2>
     <div class="offer-grid">
       <div class="offer-card">
         <div class="offer-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
         </div>
-        <h4>1º Dia — Teoria + Hands-on</h4>
-        <p>A Dra. Jéssica ensina toda a metodologia: seleção de casos, fotografia, mock-up, cor, anatomia, estratificação, acabamento e polimento. Inclui treinamento prático hands-on.</p>
+        <h4>E-book Resin Code completo</h4>
+        <p>12 capítulos com o protocolo clínico integral: workflow, materiais, estratificação, acabamento, polimento e considerações clínicas essenciais.</p>
       </div>
       <div class="offer-card">
         <div class="offer-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8.5C17 5.46 14.54 3 11.5 3S6 5.46 6 8.5c0 5.5 5.5 9.5 5.5 9.5s5.5-4 5.5-9.5z"/><circle cx="11.5" cy="8.5" r="2"/></svg>
         </div>
-        <h4>2º Dia — Caso Clínico ao Vivo</h4>
-        <p>Você acompanha um caso real do início ao fim, atendendo junto com a Dra. Jéssica dentro da sua própria clínica, com espaço para tirar dúvidas em tempo real.</p>
+        <h4>Comunidade VIP no WhatsApp</h4>
+        <p>Acesso ao grupo exclusivo de dentistas que estudam o método, para trocar casos, tirar dúvidas e acompanhar novidades da Dra. Jéssica.</p>
       </div>
       <div class="offer-card">
         <div class="offer-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M4.9 4.9l4.24 4.24M14.86 14.86l4.24 4.24M14.86 9.14l4.24-4.24M4.9 19.1l4.24-4.24"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3 6.5 7 1-5.2 4.9L18 21l-6-3.4L6 21l1.2-6.6L2 9.5l7-1z"/></svg>
         </div>
-        <h4>Suporte por 6 Meses</h4>
-        <p>Orientação direta da Dra. Jéssica para o planejamento dos seus casos, aplicando a técnica com segurança e previsibilidade na rotina clínica.</p>
+        <h4>Acesso imediato e vitalício</h4>
+        <p>Material digital, liberado assim que o pagamento é confirmado, para estudar no seu ritmo e consultar sempre que precisar.</p>
       </div>
     </div>
-  </section>
-
-  <section id="dominar">
-    <div class="eyebrow"><span>O que você vai dominar</span></div>
-    <h2 class="section-title">Do critério clínico à precificação por resultado.</h2>
-    <ul class="dominate-list">
-      <li>Selecionar casos com critério clínico e segurança</li>
-      <li>Realizar anamnese estética e mock-up direto na mesma sessão</li>
-      <li>Dominar a estratificação em camadas com resultado natural</li>
-      <li>Executar acabamento e polimento de alto padrão</li>
-      <li>Precificar por resultado e comunicar valor ao paciente</li>
-      <li>Construir um portfólio de casos para atrair pacientes de alto valor</li>
-    </ul>
   </section>
 
   <section id="investimento">
     <div class="pricing-wrap">
       <div>
         <div class="eyebrow"><span>Investimento</span></div>
-        <h2 class="section-title">Vagas limitadas — um dentista por vez.</h2>
-        <p class="section-sub" style="margin-bottom:0;">A Consultoria na Clínica é individual e personalizada — a Dra. Jéssica atende um dentista por vez, garantindo atenção total ao seu caso, ao seu contexto e ao seu nível técnico atual.</p>
-        <div class="vagas-note"><strong>Vagas limitadas:</strong> as vagas são limitadas por mês e tendem a ser preenchidas rapidamente.</div>
+        <h2 class="section-title">Um único pagamento, acesso completo ao método.</h2>
+        <p class="section-sub" style="margin-bottom:0;">O Resin Code reúne anos de prática clínica da Dra. Jéssica Daniela num protocolo direto, aplicável desde o primeiro caso. Sem mensalidade, sem letras miúdas.</p>
+        <div class="vagas-note"><strong>Dica Resin Code:</strong> quanto antes você organiza seu protocolo clínico, menos retrabalho e mais previsibilidade em cada faceta que você entrega.</div>
       </div>
       <div class="pricing-box">
-        <div class="price-label">Consultoria individual</div>
-        <div class="price-value">R$ 4.500</div>
-        <div class="price-note">Consultoria individual e personalizada</div>
-        <div class="price-install">Parcelamento em até 10x sem juros</div>
+        <div class="price-label">E-book Resin Code</div>
+        <div class="price-value">R$ 250</div>
+        <div class="price-note">Pagamento único · acesso imediato</div>
+        <div class="price-install">5% de desconto pagando no Pix ou no cartão</div>
         <ul class="price-checks">
-          <li>2 dias presenciais na sua clínica</li>
-          <li>Caso clínico real ao vivo</li>
-          <li>Suporte por 6 meses após a consultoria</li>
-          <li>Experiência completa e personalizada</li>
+          <li>E-book completo com os 12 capítulos do protocolo</li>
+          <li>Comunidade VIP no WhatsApp inclusa</li>
+          <li>Acesso imediato após a confirmação do pagamento</li>
+          <li>Acesso vitalício, para consultar quando quiser</li>
         </ul>
-        <a class="btn-gold" style="width:100%;" href="https://wa.me/5535991465670?text=Ol%C3%A1%2C%20Dra.%20Jessica!%20Quero%20garantir%20minha%20vaga%20na%20Consultoria%20na%20Cl%C3%ADnica." target="_blank" rel="noopener noreferrer">Quero garantir minha vaga</a>
+        <a class="btn-gold" style="width:100%;" href="https://pay.kirvano.com/90e6e30b-21cb-486b-b814-f0e7dff38fdc" target="_blank" rel="noopener noreferrer">Quero o Resin Code</a>
       </div>
     </div>
   </section>
 
   <blockquote>
-    “Você não precisa esperar o momento perfeito, a clínica perfeita ou o paciente perfeito. Você precisa do método certo, aplicado com orientação e segurança — e é exatamente isso que a Consultoria na Clínica entrega.”
+    “Facetas bonitas impressionam no dia da entrega. Facetas bem planejadas, bem polidas e com uma oclusão equilibrada permanecem bonitas por muitos anos.”
     <cite>Dra. Jéssica Daniela</cite>
   </blockquote>
 
   <section class="cta-final">
-    <div class="eyebrow" style="justify-content:center;"><span>Próximo passo</span></div>
-    <h2 class="section-title">Garanta sua vaga na Consultoria na Clínica.</h2>
-    <p class="section-sub">Entre em contato agora e dê o próximo passo para transformar sua prática clínica, seu posicionamento e seu faturamento com facetas em resina de alto padrão.</p>
+    <div class="eyebrow" style="justify-content:center;"><span>Quer ser um resineiro?</span></div>
+    <h2 class="section-title">Domine o código das facetas em resina de alto valor.</h2>
+    <p class="section-sub">Garanta agora o seu acesso ao Resin Code e comece a aplicar o método na sua próxima faceta.</p>
     <div class="hero-actions">
-      <a class="btn-gold" href="https://wa.me/5535991465670?text=Ol%C3%A1%2C%20Dra.%20Jessica!%20Quero%20garantir%20minha%20vaga%20na%20Consultoria%20na%20Cl%C3%ADnica." target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+      <a class="btn-gold" href="https://pay.kirvano.com/90e6e30b-21cb-486b-b814-f0e7dff38fdc" target="_blank" rel="noopener noreferrer">Quero o Resin Code</a>
     </div>
   </section>
 </main>
 
 <footer>
   <span class="footer-brand">Clínica Dra Jessica Daniela</span>
-  <p>DRA JESSICA DANIELA ODONTOLOGIA ESTETICA LTDA | CNPJ 45.866.158/0001-87 | CRO-MG 072357 | <a href="index.html">Site</a> | <a href="resincode.html">E-book Resin Code</a> | <a href="politica-privacidade.html">Política de Privacidade</a></p>
+  <p>DRA JESSICA DANIELA ODONTOLOGIA ESTETICA LTDA | CNPJ 45.866.158/0001-87 | CRO-MG 072357 | <a href="index.html">Site</a> | <a href="mentoria.html">Consultoria na Clínica</a> | <a href="politica-privacidade.html">Política de Privacidade</a></p>
 </footer>
 
 </body>
