@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Aula — Encantamento, Precificação e Presença Digital | Dra. Jessica Daniela</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #080808;
+    --black2: #101010;
+    --black3: #171717;
+    --gold: #C9A655;
+    --gold-light: #E4C477;
+    --gold-dim: rgba(201, 166, 85, .14);
+    --gold-border: rgba(201, 166, 85, .28);
+    --white: #fff;
+    --soft: #F5F0E8;
+    --muted: #A2A2A2;
+    --muted2: #707070;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    background: var(--black);
+    font-family: 'Jost', sans-serif;
+    color: var(--white);
+    overflow: hidden;
+  }
+  h1, h2, h3, blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    margin: 0;
+  }
+
+  .deck {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8vh 9vw;
+    background: var(--black);
+  }
+  .slide.active { display: flex; }
+
+  .eyebrow {
+    font-size: clamp(12px, 1vw, 15px);
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+
+  .rule {
+    width: 64px;
+    height: 3px;
+    background: var(--gold);
+    margin: 22px 0 28px;
+  }
+
+  h1.big { font-size: clamp(34px, 4.4vw, 62px); font-weight: 600; line-height: 1.08; color: var(--white); max-width: 18ch; }
+  h2.mod-title { font-size: clamp(30px, 3.6vw, 52px); font-weight: 600; color: var(--white); max-width: 20ch; line-height: 1.1; }
+  h3.point { font-size: clamp(22px, 2.4vw, 34px); font-weight: 600; color: var(--gold-light); margin-bottom: 10px; }
+
+  p, li { font-size: clamp(16px, 1.35vw, 22px); font-weight: 400; line-height: 1.6; color: var(--muted); max-width: 62ch; }
+  p.lead { color: var(--soft); font-size: clamp(18px, 1.6vw, 25px); }
+
+  .tag {
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--gold-border);
+    background: var(--gold-dim);
+    color: var(--gold-light);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    align-self: flex-start;
+  }
+
+  .module-index {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(90px, 12vw, 180px);
+    font-weight: 700;
+    color: var(--gold);
+    opacity: 0.9;
+    line-height: 0.9;
+    margin-bottom: 8px;
+  }
+
+  .points-list { display: flex; flex-direction: column; gap: 22px; margin-top: 8px; }
+  .points-list .pt { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 18px; }
+  .points-list .pt:first-child { border-top: none; padding-top: 0; }
+
+  blockquote {
+    font-size: clamp(28px, 3.2vw, 46px);
+    font-weight: 600;
+    font-style: italic;
+    color: var(--white);
+    max-width: 22ch;
+    line-height: 1.25;
+  }
+  .attribution { margin-top: 26px; color: var(--gold); font-size: 16px; font-weight: 600; }
+
+  .exercise-box {
+    margin-top: 30px;
+    padding: 28px 32px;
+    border: 1px solid var(--gold-border);
+    border-radius: 10px;
+    background: var(--black3);
+    max-width: 64ch;
+  }
+  .exercise-box .label { color: var(--gold); font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px; display: block; }
+
+  .brand-mark { position: absolute; top: 6vh; right: 9vw; font-size: 14px; color: var(--muted2); font-weight: 500; letter-spacing: 0.05em; text-align: right; }
+  .brand-mark strong { color: var(--gold-light); display: block; font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; }
+
+  .counter {
+    position: absolute;
+    bottom: 5vh; right: 9vw;
+    font-size: 13px; color: var(--muted2); font-weight: 600; letter-spacing: 0.1em;
+  }
+
+  .progress {
+    position: absolute; bottom: 0; left: 0; height: 3px; background: var(--gold);
+    transition: width 300ms ease;
+  }
+
+  /* cover */
+  .cover { align-items: flex-start; justify-content: center; }
+  .cover h1 { font-size: clamp(42px, 5.6vw, 78px); max-width: 16ch; }
+  .cover .sub { margin-top: 22px; font-size: clamp(18px, 1.8vw, 26px); color: var(--gold-light); font-weight: 500; }
+  .cover .meta { margin-top: 60px; color: var(--muted2); font-size: 15px; }
+
+  /* module divider */
+  .divider { align-items: flex-start; justify-content: center; background: linear-gradient(155deg, var(--black) 0%, var(--black3) 100%); }
+
+  /* closing */
+  .closing { align-items: center; text-align: center; justify-content: center; }
+  .closing blockquote { max-width: 20ch; margin: 0 auto; }
+
+  .nav-hint {
+    position: absolute; bottom: 5vh; left: 9vw; font-size: 13px; color: var(--muted2);
+  }
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+  <!-- 0: CAPA -->
+  <section class="slide cover active">
+    <p class="eyebrow">Mentoria Dra. Jessica Daniela</p>
+    <h1>Encantamento, precificação e presença digital</h1>
+    <p class="sub">Como vender com firmeza, cobrar o que você vale e comunicar quem você é.</p>
+    <p class="meta">Aula 01 · Baseada nas suas próprias anotações · 4 módulos</p>
+  </section>
+
+  <!-- 1: SUMÁRIO -->
+  <section class="slide">
+    <p class="eyebrow">Nesta aula</p>
+    <h2 class="mod-title">Quatro módulos, do medo à estratégia.</h2>
+    <div class="points-list" style="margin-top: 40px;">
+      <div class="pt"><h3 class="point">01 · Vença o medo de vender</h3><p>Os 4 medos que travam o faturamento — e como substituí-los.</p></div>
+      <div class="pt"><h3 class="point">02 · Precificação inteligente</h3><p>Preço como filtro de paciente, não só como número.</p></div>
+      <div class="pt"><h3 class="point">03 · Comunicação digital que conecta</h3><p>Stories, Instagram e WhatsApp com intenção.</p></div>
+      <div class="pt"><h3 class="point">04 · Conteúdo estratégico e equilíbrio</h3><p>Os 4 pilares de conteúdo e a experiência do paciente.</p></div>
+    </div>
+  </section>
+
+  <!-- 2: MODULO 1 DIVIDER -->
+  <section class="slide divider">
+    <div class="module-index">01</div>
+    <h2 class="mod-title">Vença o medo de vender</h2>
+    <p class="lead" style="margin-top:16px;">Os principais bloqueios de faturamento não são técnicos. São crenças.</p>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <p class="tag">Base</p>
+    <h3 class="point">Encantamento vem antes da venda.</h3>
+    <p>Antes de pensar em preço, pense em como a pessoa se sente sendo atendida por você.
+    Entregue seu melhor trabalho sempre — e pergunte a si mesma: "tem algo que eu gostaria
+    de melhorar aqui?" Use as palavras certas, fale o que o paciente gosta de ouvir, chame
+    pelo nome.</p>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <p class="tag">Medo 01</p>
+    <h3 class="point">"O paciente vai achar caro e ir embora."</h3>
+    <p>Não pense com o seu bolso. Pense no que o paciente realmente precisa. Quando você
+    acha que precisa ser a opção mais barata pra ser escolhida, você se torna comum —
+    e substituível.</p>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <p class="tag">Medo 02</p>
+    <h3 class="point">"Vou parecer insistente se eu oferecer."</h3>
+    <p>Não tenha medo de oferecer. Paciente não respeita quem não tem firmeza.</p>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <p class="tag">Medo 03</p>
+    <h3 class="point">"Não sou boa o suficiente pra cobrar esse valor."</h3>
+    <p>O não do paciente não é sobre você — é sobre o momento dele. Separe a rejeição da
+    sua competência.</p>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <p class="tag">Medo 04</p>
+    <h3 class="point">"Vou parecer desesperada."</h3>
+    <p>Interesse genuíno pelo paciente não é a mesma coisa que desespero. Desespero é
+    baixar o preço sem nenhum critério. Interesse é mostrar clareza e solução: manda
+    mensagem, dá um like no post dele, manda mensagem de aniversário. É cuidado, não
+    é súplica.</p>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <h3 class="point">Se você não confia no seu trabalho, isso vira medo de vender.</h3>
+    <p>Você é boa tecnicamente? Se não, estude e treine. Se sim, então aprenda a vender —
+    pessoas tímidas que vencem o medo de vender faturam mais.</p>
+    <div class="rule"></div>
+    <p class="lead">Mude suas crenças → muda seu comportamento → consequentemente muda
+    seus resultados.</p>
+  </section>
+
+  <!-- 9: exercicio modulo 1 -->
+  <section class="slide">
+    <p class="eyebrow">Exercício · Módulo 01</p>
+    <h3 class="point" style="max-width: 28ch;">Escreva os 4 medos — e a crença nova que substitui cada um.</h3>
+    <div class="exercise-box">
+      <span class="label">Prática em grupo</span>
+      <p style="margin:0;">Peça pro mentorado escrever os 4 medos (achar caro, parecer
+      insistente, não merecer o valor, parecer desesperada) e, do lado de cada um, a
+      crença nova que vai substituir aquele medo. Compartilhar em grupo pelo menos um.</p>
+    </div>
+  </section>
+
+  <!-- 10: MODULO 2 DIVIDER -->
+  <section class="slide divider">
+    <div class="module-index">02</div>
+    <h2 class="mod-title">Precificação inteligente e filtro de pacientes</h2>
+    <p class="lead" style="margin-top:16px;">Não é só "quanto cobrar" — é "quem eu quero atendendo".</p>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <h3 class="point">"Eu sou boa o suficiente pra cobrar o meu valor."</h3>
+    <p>Repita isso antes de aplicar o que vem a seguir.</p>
+    <div class="rule"></div>
+    <p class="lead">Pagamento antecipado por agendamento: cobrar um valor simbólico
+    (ex: R$100) pra reservar o horário evita desperdiçar horas vagas na agenda por
+    paciente que marca e não aparece.</p>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <p class="tag">Troca estratégica</p>
+    <h3 class="point">Troque avaliação por consulta.</h3>
+    <p>Avaliação (sem valor cobrado) é rápida e de pouco compromisso. Consulta (com valor)
+    entrega mais — o paciente é ouvido, fala suas queixas e dores, e sai com mais clareza.
+    Isso já muda a percepção de valor antes mesmo do tratamento começar.</p>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <h3 class="point">O paciente que reclama do pagamento antecipado está te dando uma informação.</h3>
+    <p>Se alguém quer um procedimento de R$3.000 mas reclama de pagar R$100 antecipado pra
+    reservar o horário, esse não é o paciente que você deseja atender — e é o paciente que
+    vai querer se tratar do jeito dele, não do jeito que faz sentido pra sua clínica.</p>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <p class="tag">Capacitação técnica</p>
+    <h3 class="point">Portfólio de resultados gera segurança pra cobrar.</h3>
+    <p>Guarde os casos de impacto e monte um portfólio. Sem portfólio de resultados, não
+    tem como se posicionar na área de estética. Não são fotos profissionais suas — são
+    casos de resultado. O portfólio é a prova da sua técnica.</p>
+  </section>
+
+  <!-- 15: exercicio modulo 2 -->
+  <section class="slide">
+    <p class="eyebrow">Exercício · Módulo 02</p>
+    <h3 class="point" style="max-width: 28ch;">Liste 3 casos recentes pro seu portfólio.</h3>
+    <div class="exercise-box">
+      <span class="label">Prática individual</span>
+      <p style="margin:0;">Peça pro mentorado listar 3 casos recentes que ele teria
+      orgulho de colocar num portfólio — e, se ainda não tiver isso organizado, definir
+      até quando vai separar esse material.</p>
+    </div>
+  </section>
+
+  <!-- 16: MODULO 3 DIVIDER -->
+  <section class="slide divider">
+    <div class="module-index">03</div>
+    <h2 class="mod-title">Comunicação digital que conecta</h2>
+    <p class="lead" style="margin-top:16px;">Não é sobre postar mais. É sobre comunicar com intenção.</p>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <p class="tag">Stories</p>
+    <h3 class="point">Cuidado com a sequência incompleta.</h3>
+    <p>Detalhes escondidos no post geram dúvida, não curiosidade. Antes de gravar,
+    pergunte: "o que eu quero comunicar aqui, e pra quem?" Lembre do que você quer que a
+    pessoa sinta ou faça depois de ver.</p>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide">
+    <h3 class="point" style="max-width: 24ch;">"Se eu entrar hoje no seu Instagram, eu consigo entender quem você é e o porquê do seu trabalho?"</h3>
+    <p style="margin-top: 20px;">Se a resposta for não, o problema não é falta de
+    conteúdo — é falta de clareza sobre o que comunicar.</p>
+  </section>
+
+  <!-- 19 -->
+  <section class="slide">
+    <p class="tag">WhatsApp humanizado</p>
+    <div class="points-list">
+      <div class="pt"><p style="margin:0;">Mensagem de boas-vindas pra quem chega.</p></div>
+      <div class="pt"><p style="margin:0;">Etiquetar/organizar quem ainda não respondeu, pra não perder contato.</p></div>
+      <div class="pt"><p style="margin:0;">Tratar cada conversa como uma pessoa, não como um número de lead.</p></div>
+    </div>
+  </section>
+
+  <!-- 20: exercicio modulo 3 -->
+  <section class="slide">
+    <p class="eyebrow">Exercício · Módulo 03</p>
+    <h3 class="point" style="max-width: 28ch;">O teste do Instagram, aplicado em você mesma.</h3>
+    <div class="exercise-box">
+      <span class="label">Prática individual</span>
+      <p style="margin:0;">Peça pro mentorado abrir o próprio Instagram como se fosse um
+      paciente novo chegando agora e responder: "eu entendo quem essa pessoa é e o que ela
+      faz, só de olhar?" Se não, listar o que falta.</p>
+    </div>
+  </section>
+
+  <!-- 21: MODULO 4 DIVIDER -->
+  <section class="slide divider">
+    <div class="module-index">04</div>
+    <h2 class="mod-title">Conteúdo estratégico e equilíbrio</h2>
+    <p class="lead" style="margin-top:16px;">Conectando estratégia de conteúdo com a rotina real da clínica.</p>
+  </section>
+
+  <!-- 22 -->
+  <section class="slide">
+    <h3 class="point">Não meça seu sucesso pela régua do outro.</h3>
+    <p>Comparar sua fase com a de alguém que está há mais tempo só desanima e distorce a
+    percepção do seu próprio progresso.</p>
+  </section>
+
+  <!-- 23 -->
+  <section class="slide">
+    <p class="tag">Os 4 pilares</p>
+    <h3 class="point">Conteúdo estratégico se apoia em quatro pontos.</h3>
+    <div class="points-list" style="margin-top: 20px;">
+      <div class="pt"><h3 class="point" style="font-size: clamp(20px,2vw,26px);">Autoridade</h3></div>
+      <div class="pt"><h3 class="point" style="font-size: clamp(20px,2vw,26px);">Bastidores</h3></div>
+      <div class="pt"><h3 class="point" style="font-size: clamp(20px,2vw,26px);">Conexão</h3></div>
+      <div class="pt"><h3 class="point" style="font-size: clamp(20px,2vw,26px);">Prova social</h3></div>
+    </div>
+  </section>
+
+  <!-- 24 -->
+  <section class="slide">
+    <h3 class="point">Experiência do paciente é encantamento de equipe.</h3>
+    <p>Sua rotina do dia a dia — do jeito que você trata a equipe, da técnica que você usa
+    — é uns 80% da energia que sustenta essa experiência. O paciente sente o clima da
+    clínica antes de sentir o resultado do tratamento.</p>
+  </section>
+
+  <!-- 25 -->
+  <section class="slide">
+    <h3 class="point">Escassez na agenda aumenta valor — com equilíbrio.</h3>
+    <p>Agenda cheia é bom sinal, mas não transmita desespero pra equipe nem pros pacientes.
+    Escassez comunicada com calma vira desejo; comunicada com ansiedade vira alerta.</p>
+  </section>
+
+  <!-- 26 -->
+  <section class="slide">
+    <h3 class="point">Vida pessoal também é conteúdo — com critério.</h3>
+    <p>Vale mostrar a rotina em casa, com o marido, com a família — mas sem parecer sempre
+    disponível a ponto de perder a autoridade.</p>
+    <div class="rule"></div>
+    <p class="lead">"Temos vagas, venha conhecer." — não "estou aqui o tempo todo esperando
+    você."</p>
+  </section>
+
+  <!-- 27: exercicio modulo 4 -->
+  <section class="slide">
+    <p class="eyebrow">Exercício · Módulo 04</p>
+    <h3 class="point" style="max-width: 28ch;">Classifique seus últimos 5 posts nos 4 pilares.</h3>
+    <div class="exercise-box">
+      <span class="label">Prática individual</span>
+      <p style="margin:0;">Peça pro mentorado classificar os últimos 5 posts dele em qual
+      dos 4 pilares (autoridade, bastidores, conexão, prova social) cada um se encaixa. Se
+      algum pilar estiver vazio, esse é o próximo conteúdo a criar.</p>
+    </div>
+  </section>
+
+  <!-- 28: FECHAMENTO -->
+  <section class="slide closing">
+    <p class="eyebrow">Pra fechar</p>
+    <blockquote>&ldquo;Acredite mais na sua capacidade do que nos seus medos.&rdquo;</blockquote>
+    <p class="attribution">— Dra. Jessica Daniela</p>
+    <p class="lead" style="margin-top: 40px; max-width: 40ch;">Peça que cada mentorado
+    responda, em uma frase, qual dos 4 módulos vai aplicar primeiro nesta semana.</p>
+  </section>
+
+  <div class="brand-mark"><strong>Dra. Jessica Daniela</strong>Mentoria</div>
+  <div class="counter" id="counter">01 / 29</div>
+  <div class="nav-hint">← → pra navegar</div>
+  <div class="progress" id="progress"></div>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  let current = 0;
+
+  function render() {
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+    document.getElementById('counter').textContent =
+      String(current + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+    document.getElementById('progress').style.width = ((current + 1) / total * 100) + '%';
+  }
+
+  function go(delta) {
+    current = Math.min(total - 1, Math.max(0, current + delta));
+    render();
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ') go(1);
+    if (e.key === 'ArrowLeft') go(-1);
+  });
+
+  document.getElementById('deck').addEventListener('click', (e) => {
+    const x = e.clientX / window.innerWidth;
+    go(x < 0.5 ? -1 : 1);
+  });
+
+  render();
+</script>
+
+</body>
+</html>
