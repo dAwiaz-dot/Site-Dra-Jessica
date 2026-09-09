@@ -405,7 +405,9 @@ section { padding: clamp(3rem, 6vw, 5.5rem) 6vw; }
 }
 
 .pricing-box .price-label { color: var(--gold); font-size: .72rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: .8rem; }
+.pricing-box .price-old { color: var(--muted); font-size: 1.3rem; text-decoration: line-through; margin-bottom: .3rem; }
 .pricing-box .price-value { font-family: "Cormorant Garamond", serif; font-size: 3.2rem; color: var(--white); font-weight: 600; line-height: 1; margin-bottom: .5rem; }
+.pricing-box .price-value .price-cents { font-size: 1.7rem; }
 .pricing-box .price-note { color: var(--muted); font-size: .86rem; margin-bottom: 1.6rem; }
 .pricing-box .price-install { color: var(--gold-light); font-size: .92rem; margin-bottom: 1.8rem; }
 
@@ -654,7 +656,8 @@ footer a:hover { color: var(--gold); }
       </div>
       <div class="pricing-box">
         <div class="price-label">E-book Resin Code</div>
-        <div class="price-value">R$ 250</div>
+        <div class="price-old">R$ 250</div>
+        <div class="price-value">R$ 99<span class="price-cents">,99</span></div>
         <div class="price-note">Pagamento único · acesso imediato</div>
         <div class="price-install">5% de desconto pagando no Pix ou no cartão</div>
         <ul class="price-checks">
