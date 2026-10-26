@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@400;500;600;700&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#0e0e0e; }
+
+.banner {
+  background:#080808;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.rule { background:#C9A655; }
+.rule.top { margin-bottom: var(--gap1); }
+
+.eyebrow {
+  font-family:'Jost',sans-serif;
+  font-weight:600;
+  color:#C9A655;
+  text-transform:uppercase;
+  display:flex;
+  align-items:center;
+  gap: var(--dot-gap);
+}
+.eyebrow::before, .eyebrow::after {
+  content:"";
+  background:#C9A655;
+  opacity:.55;
+}
+
+h1 {
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-weight:600;
+  color:#F5F0E8;
+  line-height:1;
+  white-space:nowrap;
+}
+
+.sig {
+  font-family:'Jost',sans-serif;
+  font-weight:400;
+  color:#8a8a8a;
+  text-transform:uppercase;
+  position:relative;
+}
+.sig::before, .sig::after {
+  content:"";
+  position:absolute;
+  top:50%;
+  width:22px;
+  height:1px;
+  background:rgba(201,166,85,.5);
+}
+.sig::before { right:100%; margin-right:14px; }
+.sig::after { left:100%; margin-left:14px; }
+
+/* ---- 1200x240 ---- */
+#banner-1200 { width:1200px; height:240px; --gap1:10px; --dot-gap:12px; }
+#banner-1200 .eyebrow { font-size:14px; letter-spacing:0.34em; margin-bottom:10px; }
+#banner-1200 .eyebrow::before, #banner-1200 .eyebrow::after { width:26px; height:1px; }
+#banner-1200 h1 { font-size:62px; margin-bottom:14px; }
+#banner-1200 .sig { font-size:12.5px; letter-spacing:0.2em; }
+
+/* ---- 720x320 ---- */
+#banner-720 { width:720px; height:320px; --gap1:12px; --dot-gap:12px; }
+#banner-720 .eyebrow { font-size:14px; letter-spacing:0.34em; margin-bottom:16px; }
+#banner-720 .eyebrow::before, #banner-720 .eyebrow::after { width:24px; height:1px; }
+#banner-720 h1 { font-size:66px; margin-bottom:18px; }
+#banner-720 .sig { font-size:12.5px; letter-spacing:0.2em; }
+</style>
+</head>
+<body>
+
+<div class="banner" id="banner-1200">
+  <div class="eyebrow">Método</div>
+  <h1>Resin Code</h1>
+  <div class="sig">Dra. Jéssica Daniela</div>
+</div>
+
+<div class="banner" id="banner-720">
+  <div class="eyebrow">Método</div>
+  <h1>Resin Code</h1>
+  <div class="sig">Dra. Jéssica Daniela</div>
+</div>
+
+</body>
+</html>

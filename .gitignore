@@ -1,1 +1,10 @@
 .DS_Store
+.vercel
+.env*
+
+# Material interno da agência (a pasta inteira é publicada, então nunca versionar aqui)
+_memoria/
+comercial/
+identidade/
+assets/banners/
+mentoria/aula-01-encantamento-precificacao-presenca-digital-2026-07-26/
