@@ -1,4 +1,4 @@
-const CACHE_NAME = "dra-jessica-site-v11";
+const CACHE_NAME = "dra-jessica-site-v12";
 
 const PRECACHE_URLS = [
   "/",
